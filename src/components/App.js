@@ -12,8 +12,8 @@ const ipfs = ipfsClient({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' 
 class App extends Component {
 
   async componentWillMount() {
-    await this.loadWeb3()
-    await this.loadBlockchainData()
+    // await this.loadWeb3()
+    // await this.loadBlockchainData()
   }
 
   async loadWeb3() {

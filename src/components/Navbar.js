@@ -7,6 +7,7 @@ class Navbar extends Component {
   render() {
     return (
       <div className="navigation">
+        <img src="/assets/Logo.svg" style={{ height: '50px', width: 'auto'}} className="logo"></img>
           <ul className="navigation-icons">
             <li>
               <Home className="nav-icon"/>
@@ -33,7 +34,7 @@ class Navbar extends Component {
               <p className="nav-text">Settings</p>
             </li>
           </ul>
-          <ul className="profile">
+          {/* <ul className="profile">
             <li className="profile-address">
               <small id="account">
                 <a target="_blank"
@@ -55,7 +56,7 @@ class Navbar extends Component {
                 : <span></span>
               }
             </li>
-          </ul>
+          </ul> */}
         </div>
     );
   }
