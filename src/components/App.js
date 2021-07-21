@@ -5,7 +5,6 @@ import Main from './Main'
 import Web3 from 'web3';
 import './App.css';
 
-import { Home, Folder, Film, Image, Clock, Settings } from 'react-feather';
 
 const ipfsClient = require('ipfs-http-client')
 const ipfs = ipfsClient({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' }) // leaving out the arguments will default to these values
@@ -122,34 +121,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <div className="navigation">
-          <ul>
-            <li>
-              <Home className="nav-icon"/>
-              <p className="nav-text">Home</p>
-            </li>
-            <li>
-              <Folder className="nav-icon"/>
-              <p className="nav-text">All Files</p>
-            </li>
-            <li>
-              <Film className="nav-icon"/>
-              <p className="nav-text">Videos</p>
-            </li>
-            <li>
-              <Image className="nav-icon"/>
-              <p className="nav-text">Photos</p>
-            </li>
-            <li>
-              <Clock className="nav-icon"/>
-              <p className="nav-text">Recent</p>
-            </li>
-            <li>
-              <Settings className="nav-icon"/>
-              <p className="nav-text">Settings</p>
-            </li>
-          </ul>
-        </div>
+        <Navbar account={this.state.account} />
         <div className="main">
           Middle Section
         </div>
@@ -162,7 +134,7 @@ class App extends Component {
 }
 
 export default App;
-{/* <Navbar account={this.state.account} />
+{/*
         { this.state.loading
           ? <div id="loader" className="text-center mt-5"><p>Loading...</p></div>
           : <Main
