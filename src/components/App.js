@@ -112,16 +112,23 @@ class App extends Component {
       files: [],
       loading: false,
       type: null,
-      name: null
+      name: null,
+      selectedPage : "home"
     }
     this.uploadFile = this.uploadFile.bind(this)
     this.captureFile = this.captureFile.bind(this)
+
+    this.setPage = this.setPage.bind(this)
+  }
+
+  setPage(page) {
+    this.setState({ selectedPage: page })
   }
 
   render() {
     return (
       <div className="app">
-        <Navbar account={this.state.account} />
+        <Navbar account={this.state.account} setPage={this.setPage} page={this.state.selectedPage} />
         <div className="main">
           Middle Section
         </div>

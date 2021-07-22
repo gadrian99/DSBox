@@ -4,32 +4,36 @@ import { Home, Folder, Film, Image, Clock, Settings } from 'react-feather';
 
 class Navbar extends Component {
 
+  constructor(props) {
+    super(props)
+  }
+
   render() {
     return (
       <div className="navigation">
         <img src="/assets/Logo.svg" style={{ height: '50px', width: 'auto'}} className="logo"></img>
           <ul className="navigation-icons">
-            <li>
+            <li className={this.props.page === "home" ? "active" : " "} onClick={(e) => this.props.setPage("home")} >
               <Home className="nav-icon"/>
               <p className="nav-text">Home</p>
             </li>
-            <li>
+            <li className={this.props.page === "all" ? "active" : " "} onClick={(e) => this.props.setPage("all")}>
               <Folder className="nav-icon"/>
               <p className="nav-text">All Files</p>
             </li>
-            <li>
+            <li className={this.props.page === "videos" ? "active" : " "} onClick={(e) => this.props.setPage("videos")}>
               <Film className="nav-icon"/>
               <p className="nav-text">Videos</p>
             </li>
-            <li>
+            <li className={this.props.page === "photos" ? "active" : " "} onClick={(e) => this.props.setPage("photos")}>
               <Image className="nav-icon"/>
               <p className="nav-text">Photos</p>
             </li>
-            <li>
+            <li className={this.props.page === "recent" ? "active" : " "} onClick={(e) => this.props.setPage("recent")}>
               <Clock className="nav-icon"/>
               <p className="nav-text">Recent</p>
             </li>
-            <li>
+            <li className={this.props.page === "settings" ? "active" : " "} onClick={(e) => this.props.setPage("settings")}>
               <Settings className="nav-icon"/>
               <p className="nav-text">Settings</p>
             </li>
