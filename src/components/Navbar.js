@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Identicon from 'identicon.js';
 import { Home, Folder, Film, Image, Clock, Settings } from 'react-feather';
+import {
+  Link
+} from "react-router-dom";
 
 class Navbar extends Component {
 
@@ -13,30 +16,45 @@ class Navbar extends Component {
       <div className="navigation">
         <img src="/assets/Logo.svg" style={{ height: '50px', width: 'auto'}} className="logo"></img>
           <ul className="navigation-icons">
-            <li className={this.props.page === "home" ? "active" : " "} onClick={(e) => this.props.setPage("home")} >
-              <Home className="nav-icon"/>
-              <p className="nav-text">Home</p>
-            </li>
-            <li className={this.props.page === "all" ? "active" : " "} onClick={(e) => this.props.setPage("all")}>
-              <Folder className="nav-icon"/>
-              <p className="nav-text">All Files</p>
-            </li>
-            <li className={this.props.page === "videos" ? "active" : " "} onClick={(e) => this.props.setPage("videos")}>
-              <Film className="nav-icon"/>
-              <p className="nav-text">Videos</p>
-            </li>
-            <li className={this.props.page === "photos" ? "active" : " "} onClick={(e) => this.props.setPage("photos")}>
-              <Image className="nav-icon"/>
-              <p className="nav-text">Photos</p>
-            </li>
-            <li className={this.props.page === "recent" ? "active" : " "} onClick={(e) => this.props.setPage("recent")}>
-              <Clock className="nav-icon"/>
-              <p className="nav-text">Recent</p>
-            </li>
-            <li className={this.props.page === "settings" ? "active" : " "} onClick={(e) => this.props.setPage("settings")}>
-              <Settings className="nav-icon"/>
-              <p className="nav-text">Settings</p>
-            </li>
+            <Link to="/">
+              <li className={this.props.page === "home" ? "active" : " "} onClick={(e) => this.props.setPage("home")} >
+                <Home className="nav-icon"/>
+                <p className="nav-text">Home</p>
+              </li>
+            </Link>
+            <Link to="/all">
+              <li className={this.props.page === "all" ? "active" : " "} onClick={(e) => this.props.setPage("all")}>
+                <Folder className="nav-icon"/>
+                <p className="nav-text">All Files</p>
+              </li>
+            </Link>
+            <Link to="/videos">
+              <li className={this.props.page === "videos" ? "active" : " "} onClick={(e) => this.props.setPage("videos")}>
+                <Film className="nav-icon"/>
+                <p className="nav-text">Videos</p>
+              </li>
+            </Link>
+            <Link to="/photos">
+              <li className={this.props.page === "photos" ? "active" : " "} onClick={(e) => this.props.setPage("photos")}>
+                <Image className="nav-icon"/>
+                <p className="nav-text">Photos</p>
+              </li>
+            </Link>
+            <Link to="/recent">
+              <li className={this.props.page === "recent" ? "active" : " "} onClick={(e) => this.props.setPage("recent")}>
+                <Clock className="nav-icon"/>
+                <p className="nav-text">Recent</p>
+              </li>
+            </Link>
+            <Link to="/settings">
+              <li className={this.props.page === "settings" ? "active" : " "} onClick={(e) => this.props.setPage("settings")}>
+                <Settings className="nav-icon"/>
+                <p className="nav-text">Settings</p>
+              </li>
+            </Link>
+
+
+
           </ul>
           {/* <ul className="profile">
             <li className="profile-address">

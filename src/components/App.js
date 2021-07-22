@@ -2,9 +2,21 @@ import DStorage from '../abis/DStorage.json'
 import React, { Component } from 'react';
 import Navbar from './Navbar'
 import Main from './Main'
+import Home from './Home'
+import All from './All'
+import Videos from './Videos'
+import Photos from './Photos'
+import Recent from './Recent'
+import Settings from './Settings'
+
 import Web3 from 'web3';
 import './App.css';
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 const ipfsClient = require('ipfs-http-client')
 const ipfs = ipfsClient({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' }) // leaving out the arguments will default to these values
@@ -127,15 +139,22 @@ class App extends Component {
 
   render() {
     return (
-      <div className="app">
-        <Navbar account={this.state.account} setPage={this.setPage} page={this.state.selectedPage} />
-        <div className="main">
-          Middle Section
+        <div className="app">
+          <Navbar account={this.state.account} setPage={this.setPage} page={this.state.selectedPage} />
+          <div className="main">
+            <Switch>
+              <Route path='/' component={Home} exact />
+              <Route path='/all' component={All} />
+              <Route path='/videos' component={Videos} />
+              <Route path='/photos' component={Photos} />
+              <Route path='/recent' component={Recent} />
+              <Route path='/settings' component={Settings} />
+            </Switch>
+          </div>
+          <div className="secondary">
+            Tool Bar
+          </div>
         </div>
-        <div className="secondary">
-          Tool Bar
-        </div>
-      </div>
     );
   }
 }
