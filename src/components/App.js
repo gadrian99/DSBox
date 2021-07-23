@@ -2,6 +2,7 @@ import DStorage from '../abis/DStorage.json'
 import React, { Component } from 'react';
 import Navbar from './Navbar'
 import Main from './Main'
+import ToolBar from './ToolBar'
 import Home from './Home'
 import All from './All'
 import Videos from './Videos'
@@ -13,7 +14,6 @@ import Web3 from 'web3';
 import './App.css';
 
 import {
-  BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
@@ -24,8 +24,8 @@ const ipfs = ipfsClient({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' 
 class App extends Component {
 
   async componentWillMount() {
-    // await this.loadWeb3()
-    // await this.loadBlockchainData()
+    await this.loadWeb3()
+    await this.loadBlockchainData()
   }
 
   async loadWeb3() {
@@ -125,7 +125,8 @@ class App extends Component {
       loading: false,
       type: null,
       name: null,
-      selectedPage : "home"
+      selectedPage : "home",
+      toolState: false
     }
     this.uploadFile = this.uploadFile.bind(this)
     this.captureFile = this.captureFile.bind(this)
@@ -142,6 +143,15 @@ class App extends Component {
         <div className="app">
           <Navbar account={this.state.account} setPage={this.setPage} page={this.state.selectedPage} />
           <div className="main">
+          { this.state.loading
+            ? <div id="loader" className="text-center"><p>Loading...</p></div>
+            : <Main
+                files={this.state.files}
+                captureFile={this.captureFile}
+                uploadFile={this.uploadFile}
+              />
+          }
+            <button onClick={() => this.setState({ toolState: !this.state.toolState })}>toggle</button>
             <Switch>
               <Route path='/' component={Home} exact />
               <Route path='/all' component={All} />
@@ -151,21 +161,10 @@ class App extends Component {
               <Route path='/settings' component={Settings} />
             </Switch>
           </div>
-          <div className="secondary">
-            Tool Bar
-          </div>
+          {this.state.toolState ? <ToolBar state={this.state.toolState}/> : null }
         </div>
     );
   }
 }
 
 export default App;
-{/*
-        { this.state.loading
-          ? <div id="loader" className="text-center mt-5"><p>Loading...</p></div>
-          : <Main
-              files={this.state.files}
-              captureFile={this.captureFile}
-              uploadFile={this.uploadFile}
-            />
-        } */}
