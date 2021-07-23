@@ -80,8 +80,9 @@ a:hover {
 }
 
 .main {
-    /* background-color: aqua; */
+    background-color: #FBFAF5;
     flex-grow: 1;
+    padding: 3.5rem;
 }
 
 .toolbar {
@@ -92,4 +93,11 @@ a:hover {
     border-radius: 20px 0 0 20px;
     box-shadow: -5px 0px 20px 0px #00000099;
     z-index: 1;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 2rem;
+    border-bottom: 2px solid #c3c3c3;
 }

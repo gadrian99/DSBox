@@ -9,6 +9,7 @@ import Videos from './Videos'
 import Photos from './Photos'
 import Recent from './Recent'
 import Settings from './Settings'
+import Header from './Header'
 
 import Web3 from 'web3';
 import './App.css';
@@ -143,14 +144,15 @@ class App extends Component {
         <div className="app">
           <Navbar account={this.state.account} setPage={this.setPage} page={this.state.selectedPage} />
           <div className="main">
-          { this.state.loading
+            <Header />
+          {/* { this.state.loading
             ? <div id="loader" className="text-center"><p>Loading...</p></div>
             : <Main
                 files={this.state.files}
                 captureFile={this.captureFile}
                 uploadFile={this.uploadFile}
               />
-          }
+          } */}
             <button onClick={() => this.setState({ toolState: !this.state.toolState })}>toggle</button>
             <Switch>
               <Route path='/' component={Home} exact />
