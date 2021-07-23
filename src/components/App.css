@@ -26,6 +26,10 @@ a:hover {
     min-width: 6rem;
     height: 100vh;
     text-align: center;
+    border-right: 1px solid #dbdbdb;
+    border-radius: 0 20px 20px 0;
+    box-shadow: 5px 0px 20px 0px #00000099;
+    z-index: 1;
 }
 
 .navigation-icons {
@@ -72,14 +76,20 @@ a:hover {
 
 .active {
     color: #763B7D;
+    border-right: 3px solid #B939D1 ;
 }
 
 .main {
-    background-color: aqua;
+    /* background-color: aqua; */
     flex-grow: 1;
 }
 
 .toolbar {
     min-width: 20rem;
-    background-color: red;
+    /* background-color: red; */
+    text-align: center;
+    border-left: 1px solid #dbdbdb;
+    border-radius: 20px 0 0 20px;
+    box-shadow: -5px 0px 20px 0px #00000099;
+    z-index: 1;
 }
