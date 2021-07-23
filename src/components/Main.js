@@ -33,7 +33,7 @@ class Main extends Component {
                   </form>
               </div>
               <p>&nbsp;</p>
-              <table className="table-sm table-bordered text-monospace" style={{ width: '1000px', maxHeight: '450px'}}>
+              <table className="table-sm table-bordered text-monospace" style={{ minWidth: '1000px', maxHeight: '450px'}}>
                 <thead style={{ 'fontSize': '15px' }}>
                   <tr className="bg-dark text-white">
                     <th scope="col" style={{ width: '10px'}}>id</th>
@@ -43,7 +43,7 @@ class Main extends Component {
                     <th scope="col" style={{ width: '90px'}}>size</th>
                     <th scope="col" style={{ width: '90px'}}>date</th>
                     <th scope="col" style={{ width: '120px'}}>uploader/view</th>
-                    <th scope="col" style={{ width: '120px'}}>hash/view/get</th>
+                    <th scope="col" style={{ width: '120px'}}>preview</th>
                   </tr>
                 </thead>
                 { this.props.files.map((file, key) => {
@@ -65,12 +65,13 @@ class Main extends Component {
                           </a>
                          </td>
                         <td>
-                          <a
+                          {/* <a
                             href={"https://ipfs.infura.io/ipfs/" + file.fileHash}
                             rel="noopener noreferrer"
                             target="_blank">
                             {file.fileHash.substring(0,10)}...
-                          </a>
+                          </a> */}
+                          <img style={{ height: '50px' }}src={"https://ipfs.infura.io/ipfs/" + file.fileHash} />
                         </td>
                       </tr>
                     </thead>

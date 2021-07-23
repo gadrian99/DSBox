@@ -154,7 +154,13 @@ class App extends Component {
             <button onClick={() => this.setState({ toolState: !this.state.toolState })}>toggle</button>
             <Switch>
               <Route path='/' component={Home} exact />
-              <Route path='/all' component={All} />
+
+              <Route
+                path='/all'
+                render={(props) => (
+                  <All {...props} files={this.state.files} />
+                )}
+              />
               <Route path='/videos' component={Videos} />
               <Route path='/photos' component={Photos} />
               <Route path='/recent' component={Recent} />
