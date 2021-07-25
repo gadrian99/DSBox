@@ -3,9 +3,8 @@ import { convertBytes } from './helpers';
 import moment from 'moment'
 
 const All = (props) => {
-    console.log(props)
     return(
-        <table className="table-sm table-bordered text-monospace" style={{ width: '100%', maxHeight: '450px', marginTop: '2rem'}}>
+        <table className="table-sm table-bordered text-monospace text-center" style={{ width: '100%', maxHeight: '450px', marginTop: '2rem'}}>
                 <thead style={{ 'fontSize': '15px' }}>
                   <tr className="bg-dark text-white">
                     <th scope="col" style={{ width: '10px'}}>id</th>
