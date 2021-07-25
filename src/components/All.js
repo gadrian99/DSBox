@@ -4,25 +4,25 @@ import moment from 'moment'
 
 const All = (props) => {
     return(
-        <table className="table-sm table-bordered text-monospace text-center" style={{ width: '100%', maxHeight: '450px', marginTop: '2rem'}}>
-                <thead style={{ 'fontSize': '15px' }}>
+        <table className="table-sm text-center" style={{ width: '100%', maxHeight: '450px', marginTop: '2rem'}}>
+                <thead style={{ 'fontSize': '18px' }}>
                   <tr className="bg-dark text-white">
-                    <th scope="col" style={{ width: '10px'}}>id</th>
-                    <th scope="col" style={{ width: '200px'}}>name</th>
-                    <th scope="col" style={{ width: '230px'}}>description</th>
-                    <th scope="col" style={{ width: '120px'}}>type</th>
-                    <th scope="col" style={{ width: '90px'}}>size</th>
-                    <th scope="col" style={{ width: '90px'}}>date</th>
-                    <th scope="col" style={{ width: '120px'}}>uploader/view</th>
-                    <th scope="col" style={{ width: '120px'}}>preview</th>
+                    {/* <th scope="col" style={{ width: '10px'}}>ID</th> */}
+                    <th scope="col" style={{ width: '200px'}}>Name</th>
+                    <th scope="col" style={{ width: '230px'}}>Description</th>
+                    <th scope="col" style={{ width: '120px'}}>Type</th>
+                    <th scope="col" style={{ width: '90px'}}>Size</th>
+                    <th scope="col" style={{ width: '90px'}}>Date</th>
+                    <th scope="col" style={{ width: '120px'}}>Uploader/View</th>
+                    <th scope="col" style={{ width: '120px'}}>Preview</th>
                   </tr>
                 </thead>
                 { props.files.map((file, key) => {
                   return(
                     <thead className="text-white" style={{ 'fontSize': '15px' }} key={key}>
-                      <tr>
-                        <td className="overflow" style={{ maxWidth: '10px'}}>{file.fileId}</td>
-                        <td className="overflow" style={{ maxWidth: '200px'}}>{file.fileName}</td>
+                      <tr className="table-row">
+                        {/* <td className="overflow" style={{ maxWidth: '10px'}}>{file.fileId}</td> */}
+                        <td className="overflow" style={{ maxWidth: '200px', borderTopLeftRadius: '.2rem'}}>{file.fileName}</td>
                         <td className="overflow" style={{ maxWidth: '230px'}}>{file.fileDescription}</td>
                         <td className="overflow" style={{ maxWidth: '120px'}}>{file.fileType}</td>
                         <td className="overflow" style={{ maxWidth: '90px'}}>{convertBytes(file.fileSize)}</td>
