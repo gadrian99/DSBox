@@ -143,7 +143,7 @@ class App extends Component {
     return (
         <div className="app">
           <Navbar account={this.state.account} setPage={this.setPage} page={this.state.selectedPage} />
-          <div className="main">
+          <div className="main main-bg">
             <Header />
           {/* { this.state.loading
             ? <div id="loader" className="text-center"><p>Loading...</p></div>
