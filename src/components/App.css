@@ -1,17 +1,17 @@
 /* Styles go here */
 :root {
-    --primary: #BB86FC;
+    --primary: #ad6bff;
     --primary-variant: #3700B3;
     --secondary: #27262C;
     --background: #1a1a1a;
     --error: #CF6679;
-    --on-primary: #ad6bff;
+    --on-primary: #9f51ff;
 }
 
 * {
     margin: 0;
     box-sizing: border-box;
-    font-color: white;
+    font-family: 'Arvo', serif;
 }
 
 a,
@@ -115,4 +115,35 @@ a:hover {
 .overflow {
     text-overflow: ellipsis;
     overflow: hidden;
+}
+
+.form-group {
+    width: 100%;
+}
+
+.form-button {
+    width: 20rem;
+    height: 3rem;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 2rem;
+    background-color: var(--primary);
+    color: white;
+    margin-top: 2rem;
+}
+
+.form-button:hover {
+    background-color: var(--on-primary);
+
+}
+
+.form-wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-control {
+    margin-bottom: 1rem;
 }

@@ -71,7 +71,10 @@ class Main extends Component {
                             target="_blank">
                             {file.fileHash.substring(0,10)}...
                           </a> */}
-                          <img style={{ height: '50px' }}src={"https://ipfs.infura.io/ipfs/" + file.fileHash} />
+                          <img
+                            style={{ height: '50px' }}
+                            src={"https://ipfs.infura.io/ipfs/" + file.fileHash}
+                          />
                         </td>
                       </tr>
                     </thead>
