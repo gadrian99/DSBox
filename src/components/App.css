@@ -181,3 +181,45 @@ a:hover {
 .table-row:hover {
     background-color: var(--on-primary);
 }
+
+.connect-alert {
+    background-color: var(--background);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    font-size: 3rem;
+    font-weight: 800;
+    color: white;
+}
+
+.connect-alert-icon {
+    height: 3rem;
+}
+
+.connect-alert-primary {
+    margin-bottom: 2rem;
+    /* color:var(--error) */
+}
+
+.connect-alert-secondary {
+    margin-bottom: 2.5rem;
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+.connect-alert-button {
+    font-size: 2rem;
+    padding: 1.5rem 4rem;
+    border-radius: 1.5rem;
+    background-color: var(--primary);
+    color:white;
+    border: none;
+    font-weight: bold;
+}
+
+.connect-alert-button:hover {
+    background-color: var(--on-primary);
+}

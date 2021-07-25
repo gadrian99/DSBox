@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from './Header';
-import Videos from './Videos';
 
-function Home() {
+function Profile() {
     return(
         <>
-            <Header page="Home" />
+            <Header page="Profile" />
+
         </>
     )
 }
 
-export default Home
+export default Profile

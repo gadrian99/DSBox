@@ -1,10 +1,13 @@
 import React from 'react';
+import Header from './Header'
 import { convertBytes } from './helpers';
 import moment from 'moment'
 
 const All = (props) => {
     return(
-        <table className="table-sm text-center" style={{ width: '100%', maxHeight: '450px', marginTop: '2rem'}}>
+        <>
+          <Header page= "All Files" />
+          <table className="table-sm text-center" style={{ width: '100%', maxHeight: '450px', marginTop: '2rem'}}>
                 <thead style={{ 'fontSize': '18px' }}>
                   <tr className="bg-dark text-white">
                     {/* <th scope="col" style={{ width: '10px'}}>ID</th> */}
@@ -50,6 +53,7 @@ const All = (props) => {
                   )
                 })}
               </table>
+        </>
     )
     // import files from blockchain to this component
 }

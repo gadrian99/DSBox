@@ -1,12 +1,15 @@
 import React from 'react';
 import { convertBytes } from './helpers';
 import moment from 'moment'
+import Header from './Header';
 
 const Videos = (props) => {
     const filteredFiles = props.files.filter(file => file.fileType.substring(0,5) === "video")
 
     return(
-        <table className="table-sm text-center" style={{ width: '100%', maxHeight: '450px', marginTop: '2rem'}}>
+        <>
+            <Header page="Videos" />
+            <table className="table-sm text-center" style={{ width: '100%', maxHeight: '450px', marginTop: '2rem'}}>
                 <thead style={{ 'fontSize': '18px' }}>
                   <tr className="bg-dark text-white">
                     {/* <th scope="col" style={{ width: '10px'}}>ID</th> */}
@@ -52,6 +55,7 @@ const Videos = (props) => {
                   )
                 })}
               </table>
+        </>
     )
 }
 

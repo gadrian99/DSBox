@@ -7,8 +7,9 @@ import Home from './Home'
 import All from './All'
 import Videos from './Videos'
 import Photos from './Photos'
-import Settings from './Settings'
+import Profile from './Profile'
 import Upload from './Upload'
+import ConnectAlert from './ConnectAlert'
 import Header from './Header'
 
 import Web3 from 'web3';
@@ -25,8 +26,12 @@ const ipfs = ipfsClient({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' 
 class App extends Component {
 
   async componentWillMount() {
-    await this.loadWeb3()
-    await this.loadBlockchainData()
+    try {
+      await this.loadWeb3()
+      await this.loadBlockchainData()
+    } catch {
+      alert('error connecting to blockchain')
+    }
   }
 
   async loadWeb3() {
@@ -140,11 +145,11 @@ class App extends Component {
   }
 
   render() {
+    {if(this.state.account === '') return(<ConnectAlert loadWeb3={this.loadWeb3} loadBlockchainData={this.loadBlockchainData} />)}
     return (
         <div className="app">
           <Navbar account={this.state.account} setPage={this.setPage} page={this.state.selectedPage} />
           <div className="main main-bg">
-            <Header />
           {/* { this.state.loading
             ? <div id="loader" className="text-center"><p>Loading...</p></div>
             : <Main
@@ -180,7 +185,7 @@ class App extends Component {
                   <Upload {...props}  captureFile={this.captureFile} uploadFile={this.uploadFile}/>
                 )}
               />
-              <Route path='/settings' component={Settings} />
+              <Route path='/profile' component={Profile} />
             </Switch>
           </div>
           {this.state.toolState ? <ToolBar state={this.state.toolState}/> : null }

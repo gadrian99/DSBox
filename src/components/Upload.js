@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { convertBytes } from './helpers';
 import moment from 'moment'
+import Header from './Header';
 
 class Upload extends Component {
 
   render() {
     return (
-      <div className="container-fluid mt-4 text-center">
+      <>
+        <Header page="Upload a file" />
+        <div className="container-fluid mt-4 text-center">
         <form className="form-wrapper"onSubmit={(event) => {
             event.preventDefault()
             const description = this.fileDescription.value
@@ -29,6 +32,8 @@ class Upload extends Component {
             <button type="submit" className="form-button"><b>Upload</b></button>
         </form>
       </div>
+      </>
+
     );
   }
 }
