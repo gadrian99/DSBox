@@ -153,10 +153,9 @@ class App extends Component {
                 uploadFile={this.uploadFile}
               />
           } */}
-            <button onClick={() => this.setState({ toolState: !this.state.toolState })}>toggle</button>
+            {/* <button onClick={() => this.setState({ toolState: !this.state.toolState })}>toggle</button> */}
             <Switch>
               <Route path='/' component={Home} exact />
-
               <Route
                 path='/all'
                 render={(props) => (

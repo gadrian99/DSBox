@@ -1,14 +1,24 @@
 /* Styles go here */
+:root {
+    --primary: #BB86FC;
+    --primary-variant: #3700B3;
+    --secondary: #27262C;
+    --background: #1a1a1a;
+    --error: #CF6679;
+    --on-primary: #ad6bff;
+}
+
 * {
     margin: 0;
     box-sizing: border-box;
+    font-color: white;
 }
 
 a,
 a::before,
 a::after,
 a:hover {
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
@@ -26,10 +36,9 @@ a:hover {
     min-width: 6rem;
     height: 100vh;
     text-align: center;
-    border-right: 1px solid #dbdbdb;
-    border-radius: 0 20px 20px 0;
-    box-shadow: 5px 0px 20px 0px #00000099;
+    box-shadow: 5px 0px 20px 0px #0000001f;
     z-index: 1;
+    background-color: var(--background);
 }
 
 .navigation-icons {
@@ -50,7 +59,7 @@ a:hover {
 }
 
 .navigation ul li:hover {
-    color: #B939D1;
+    color: var(--on-primary);
     transition: .2s linear;
 }
 
@@ -75,12 +84,12 @@ a:hover {
 }
 
 .active {
-    color: #763B7D;
-    border-right: 3px solid #B939D1 ;
+    color: var(--on-primary);
+    border-right: 0.2rem solid var(--on-primary) ;
 }
 
 .main {
-    background-color: #FBFAF5;
+    background-color: var(--secondary);
     flex-grow: 1;
     padding: 3.5rem;
 }
@@ -100,4 +109,10 @@ a:hover {
     justify-content: space-between;
     font-size: 2rem;
     border-bottom: 2px solid #c3c3c3;
+    color:white;
+}
+
+.overflow {
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
