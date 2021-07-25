@@ -2,7 +2,7 @@ import React from 'react';
 import { convertBytes } from './helpers';
 import moment from 'moment'
 
-const All = (props) => {
+const Photos = (props) => {
     const filteredFiles = props.files.filter(file => file.fileType.substring(0,5) === "image")
 
     return(
@@ -53,7 +53,6 @@ const All = (props) => {
                 })}
               </table>
     )
-    // import files from blockchain to this component
 }
 
-export default All
+export default Photos
