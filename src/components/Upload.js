@@ -6,7 +6,7 @@ class Upload extends Component {
 
   render() {
     return (
-      <div className="container-fluid mt-5 text-center">
+      <div className="container-fluid mt-4 text-center">
         <form className="form-wrapper"onSubmit={(event) => {
             event.preventDefault()
             const description = this.fileDescription.value
@@ -17,12 +17,15 @@ class Upload extends Component {
                 <input
                     id="fileDescription"
                     type="text"
+                    maxLength="30"
                     ref={(input) => { this.fileDescription = input }}
-                    className="form-control text-monospace"
+                    className="form-control"
                     placeholder="Title..."
                     required />
             </div>
-            <input type="file" onChange={this.props.captureFile} className="text-white text-monospace"/>
+            <div className="preview">
+              <input type="file" onChange={this.props.captureFile} className="text-white preview-button"/>
+            </div>
             <button type="submit" className="form-button"><b>Upload</b></button>
         </form>
       </div>
