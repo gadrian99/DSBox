@@ -145,7 +145,7 @@ class App extends Component {
   }
 
   render() {
-    {if(this.state.account === '') return(<ConnectAlert loadWeb3={this.loadWeb3} loadBlockchainData={this.loadBlockchainData} />)}
+    {if(this.state.account === '' || this.state.dstorage === null) return(<ConnectAlert loadWeb3={this.loadWeb3} loadBlockchainData={this.loadBlockchainData} />)}
     return (
         <div className="app">
           <Navbar account={this.state.account} setPage={this.setPage} page={this.state.selectedPage} />
