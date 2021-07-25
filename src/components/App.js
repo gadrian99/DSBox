@@ -163,7 +163,12 @@ class App extends Component {
                 )}
               />
               <Route path='/videos' component={Videos} />
-              <Route path='/photos' component={Photos} />
+              <Route
+                path='/photos'
+                render={(props) => (
+                  <Photos {...props} files={this.state.files} />
+                )}
+              />
               <Route
                 path='/upload'
                 render={(props) => (
