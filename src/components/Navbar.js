@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Identicon from 'identicon.js';
-import { Home, Folder, Film, Image, Clock, Settings } from 'react-feather';
+import { Home, Folder, Film, Image, Settings, CornerRightUp } from 'react-feather';
 import {
   Link
 } from "react-router-dom";
@@ -41,10 +41,10 @@ class Navbar extends Component {
                 <p className="nav-text">Photos</p>
               </li>
             </Link>
-            <Link to="/recent">
-              <li className={this.props.page === "recent" ? "active" : " "} onClick={(e) => this.props.setPage("recent")}>
-                <Clock className="nav-icon"/>
-                <p className="nav-text">Recent</p>
+            <Link to="/upload">
+              <li className={this.props.page === "upload" ? "active" : " "} onClick={(e) => this.props.setPage("upload")}>
+                <CornerRightUp className="nav-icon"/>
+                <p className="nav-text">Upload</p>
               </li>
             </Link>
             <Link to="/settings">

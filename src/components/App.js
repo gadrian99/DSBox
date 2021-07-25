@@ -7,8 +7,8 @@ import Home from './Home'
 import All from './All'
 import Videos from './Videos'
 import Photos from './Photos'
-import Recent from './Recent'
 import Settings from './Settings'
+import Upload from './Upload'
 import Header from './Header'
 
 import Web3 from 'web3';
@@ -164,7 +164,12 @@ class App extends Component {
               />
               <Route path='/videos' component={Videos} />
               <Route path='/photos' component={Photos} />
-              <Route path='/recent' component={Recent} />
+              <Route
+                path='/upload'
+                render={(props) => (
+                  <Upload {...props}  captureFile={this.captureFile} uploadFile={this.uploadFile}/>
+                )}
+              />
               <Route path='/settings' component={Settings} />
             </Switch>
           </div>
