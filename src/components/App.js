@@ -52,7 +52,7 @@ class App extends Component {
     // Load account
     const accounts = await web3.eth.getAccounts()
     this.setState({ account: accounts[0] })
-    // Network ID
+    // Network IDaccount
     const networkId = await web3.eth.net.getId()
     const networkData = DStorage.networks[networkId]
     if(networkData) {
@@ -145,7 +145,7 @@ class App extends Component {
   }
 
   render() {
-    {if(this.state.account === '' || this.state.dstorage === null) return(<ConnectAlert loadWeb3={this.loadWeb3} loadBlockchainData={this.loadBlockchainData} />)}
+    {if(this.state.account === '' && this.state.dstorage === null) return(<ConnectAlert loadWeb3={this.loadWeb3} loadBlockchainData={this.loadBlockchainData} />)}
     return (
         <div className="app">
           <Navbar account={this.state.account} setPage={this.setPage} page={this.state.selectedPage} />
@@ -185,7 +185,12 @@ class App extends Component {
                   <Upload {...props}  captureFile={this.captureFile} uploadFile={this.uploadFile}/>
                 )}
               />
-              <Route path='/profile' component={Profile} />
+              <Route
+                path='/profile'
+                render={(props) => (
+                  <Profile {...props} account={this.state.account} />
+                )}
+              />
             </Switch>
           </div>
           {this.state.toolState ? <ToolBar state={this.state.toolState}/> : null }
