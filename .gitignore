@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 
+/truffle-config.js
 # testing
 /coverage
 
