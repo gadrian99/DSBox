@@ -22,7 +22,7 @@ class Navbar extends Component {
                 <p className="nav-text">Home</p>
               </li>
             </Link> */}
-            <Link to="/all">
+            <Link to="/">
               <li className={this.props.page === "all" ? "active" : " "} onClick={(e) => this.props.setPage("all")}>
                 <Folder className="nav-icon"/>
                 <p className="nav-text">All Files</p>

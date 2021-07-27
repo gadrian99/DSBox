@@ -1,16 +1,12 @@
 import DStorage from '../abis/DStorage.json'
 import React, { Component } from 'react';
 import Navbar from './Navbar'
-import Main from './Main'
 import ToolBar from './ToolBar'
-import Home from './Home'
 import All from './All'
 import Videos from './Videos'
 import Photos from './Photos'
-import Profile from './Profile'
 import Upload from './Upload'
 import ConnectAlert from './ConnectAlert'
-import Header from './Header'
 
 import Web3 from 'web3';
 import './App.css';
@@ -145,53 +141,41 @@ class App extends Component {
   }
 
   render() {
-    {if(this.state.account === '' && this.state.dstorage === null) return(<ConnectAlert loadWeb3={this.loadWeb3} loadBlockchainData={this.loadBlockchainData} />)}
+    {if(this.state.account === '' || this.state.dstorage == null ) return(<ConnectAlert />)}
     return (
         <div className="app">
           <Navbar account={this.state.account} setPage={this.setPage} page={this.state.selectedPage} />
           <div className="main main-bg">
-          {/* { this.state.loading
-            ? <div id="loader" className="text-center"><p>Loading...</p></div>
-            : <Main
-                files={this.state.files}
-                captureFile={this.captureFile}
-                uploadFile={this.uploadFile}
-              />
-          } */}
+            { this.state.loading
+            ? <div className="loader-wrapper"><div id="loader" className="loader"><p>Loading...</p></div></div>
+            : <Switch>
+            <Route
+              exact path='/'
+              render={(props) => (
+                <All {...props} account={this.state.account} files={this.state.files} />
+              )}
+            />
+            <Route
+              path='/videos'
+              render={(props) => (
+                <Videos {...props} account={this.state.account} files={this.state.files} />
+              )}
+            />
+            <Route
+              path='/photos'
+              render={(props) => (
+                <Photos {...props} account={this.state.account} files={this.state.files} />
+              )}
+            />
+            <Route
+              path='/upload'
+              render={(props) => (
+                <Upload {...props}  captureFile={this.captureFile} uploadFile={this.uploadFile}/>
+              )}
+            />
+          </Switch>}
             {/* <button onClick={() => this.setState({ toolState: !this.state.toolState })}>toggle</button> */}
-            <Switch>
-              <Route path='/' component={Home} exact />
-              <Route
-                path='/all'
-                render={(props) => (
-                  <All {...props} files={this.state.files} />
-                )}
-              />
-              <Route
-                path='/videos'
-                render={(props) => (
-                  <Videos {...props} files={this.state.files} />
-                )}
-              />
-              <Route
-                path='/photos'
-                render={(props) => (
-                  <Photos {...props} files={this.state.files} />
-                )}
-              />
-              <Route
-                path='/upload'
-                render={(props) => (
-                  <Upload {...props}  captureFile={this.captureFile} uploadFile={this.uploadFile}/>
-                )}
-              />
-              <Route
-                path='/profile'
-                render={(props) => (
-                  <Profile {...props} account={this.state.account} />
-                )}
-              />
-            </Switch>
+
           </div>
           {this.state.toolState ? <ToolBar state={this.state.toolState}/> : null }
         </div>

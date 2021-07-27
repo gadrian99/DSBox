@@ -6,11 +6,11 @@ import moment from 'moment'
 const All = (props) => {
     return(
         <>
-          <Header page= "All Files" />
+          <Header page= "All Files" account={props.account} />
           <table className="table-sm text-center" style={{ width: '100%', maxHeight: '450px', marginTop: '2rem'}}>
                 <thead style={{ 'fontSize': '18px' }}>
                   <tr className="bg-dark text-white">
-                    {/* <th scope="col" style={{ width: '10px'}}>ID</th> */}
+                    <th scope="col" style={{ width: '10px'}}>ID</th>
                     <th scope="col" style={{ width: '200px'}}>Name</th>
                     <th scope="col" style={{ width: '230px'}}>Description</th>
                     <th scope="col" style={{ width: '120px'}}>Type</th>
@@ -24,7 +24,7 @@ const All = (props) => {
                   return(
                     <thead className="text-white" style={{ 'fontSize': '15px' }} key={key}>
                       <tr className="table-row">
-                        {/* <td className="overflow" style={{ maxWidth: '10px'}}>{file.fileId}</td> */}
+                        <td className="overflow" style={{ maxWidth: '10px'}}>{file.fileId}</td>
                         <td className="overflow" style={{ maxWidth: '200px', borderTopLeftRadius: '.2rem'}}>{file.fileName}</td>
                         <td className="overflow" style={{ maxWidth: '230px'}}>{file.fileDescription}</td>
                         <td className="overflow" style={{ maxWidth: '120px'}}>{file.fileType}</td>
