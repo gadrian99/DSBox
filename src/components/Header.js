@@ -14,7 +14,7 @@ function Header(props) {
                   className="header-address"
                   rel="noopener noreferrer"
                   href={"https://etherscan.io/address/" + props.account}>
-                    {props.account ? props.account.substring(0,6) : '0x0'}...{props.account ? props.account.substring(24,42) : '0x0'}
+                    {props.account ? props.account.substring(0,10) : '0x0'}...{props.account ? props.account.substring(35,42) : '0x0'}
                 </a>
                 {props.account
                 ? <img

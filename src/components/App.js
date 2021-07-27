@@ -51,6 +51,7 @@ class App extends Component {
     const web3 = window.web3
     // Load account
     const accounts = await web3.eth.getAccounts()
+    console.log(accounts)
     this.setState({ account: accounts[0] })
     // Network IDaccount
     const networkId = await web3.eth.net.getId()
@@ -137,7 +138,7 @@ class App extends Component {
       dstorage: null,
       files: [],
       loading: false,
-      error: false,
+      error: true,
       type: null,
       name: null,
       selectedPage : "home",
