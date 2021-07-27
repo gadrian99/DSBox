@@ -326,3 +326,15 @@ a:hover {
     }
   }
 
+
+.notfound-alert{
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    font-size: 3rem;
+    font-weight: 800;
+    color: white;
+}

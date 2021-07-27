@@ -7,6 +7,8 @@ import Videos from './Videos'
 import Photos from './Photos'
 import Upload from './Upload'
 import ConnectAlert from './ConnectAlert'
+import NotFound from './NotFound';
+
 
 import Web3 from 'web3';
 import './App.css';
@@ -62,13 +64,15 @@ class App extends Component {
       this.setState({ dstorage })
       // Get files amount
       const filesCount = await dstorage.methods.fileCount().call()
-      this.setState({ filesCount })
+        this.setState({ filesCount })
       // Load files&sort by the newest
       for (var i = filesCount; i >= 1; i--) {
         const file = await dstorage.methods.files(i).call()
-        this.setState({
-          files: [...this.state.files, file]
-        })
+        if(file.uploader === this.state.account) {
+          this.setState({
+            files: [...this.state.files, file]
+          })
+        }
       }
     } else {
       this.setState({ error: true })
@@ -138,7 +142,7 @@ class App extends Component {
       dstorage: null,
       files: [],
       loading: false,
-      error: true,
+      error: false,
       type: null,
       name: null,
       selectedPage : "home",
@@ -155,6 +159,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.files)
     {if(this.state.error) return(<ConnectAlert />)}
     return (
         <div className="app">
@@ -187,6 +192,7 @@ class App extends Component {
                 <Upload {...props}  account={this.state.account} captureFile={this.captureFile} uploadFile={this.uploadFile}/>
               )}
             />
+            <Route component={NotFound} />
           </Switch>}
             {/* <button onClick={() => this.setState({ toolState: !this.state.toolState })}>toggle</button> */}
           </div>

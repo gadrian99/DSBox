@@ -3,7 +3,6 @@ import Identicon from 'identicon.js';
 import { PlusSquare, Search, Star } from 'react-feather';
 
 function Header(props) {
-    console.log(props)
     return(
         <div className="header">
             <p style={{ fontFamily: 'Oleo Script, cursive'}}>{props.page}</p>

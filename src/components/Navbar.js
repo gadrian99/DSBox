@@ -11,7 +11,6 @@ class Navbar extends Component {
   }
 
   render() {
-    console.log(this.props.page)
     return (
       <div className="navigation">
         <img src="/assets/Logo.svg" style={{ height: '50px', width: 'auto'}} className="logo"></img>
