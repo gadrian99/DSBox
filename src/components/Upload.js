@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { convertBytes } from './helpers';
 import moment from 'moment'
 import Header from './Header';
+import { Upload as UploadIcon} from 'react-feather'
 
 class Upload extends Component {
 
@@ -29,7 +30,7 @@ class Upload extends Component {
             <div className="preview">
               <input type="file" onChange={this.props.captureFile} className="text-white preview-button"/>
             </div>
-            <button type="submit" className="form-button"><b>Upload</b></button>
+            <button type="submit" className="form-button"><UploadIcon style={{ marginRight: '1rem', lineHeight: '2px' }} />Upload</button>
         </form>
       </div>
       </>

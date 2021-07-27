@@ -53,7 +53,6 @@ class App extends Component {
     const web3 = window.web3
     // Load account
     const accounts = await web3.eth.getAccounts()
-    console.log(accounts)
     this.setState({ account: accounts[0] })
     // Network IDaccount
     const networkId = await web3.eth.net.getId()
@@ -159,7 +158,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.files)
     {if(this.state.error) return(<ConnectAlert />)}
     return (
         <div className="app">
