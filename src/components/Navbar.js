@@ -46,17 +46,7 @@ class Navbar extends Component {
                 <p className="nav-text">Upload</p>
               </li>
             </Link>
-            <Link to="/profile">
-              <li className={this.props.page === "profile" ? "active" : " "} onClick={(e) => this.props.setPage("profile")}>
-                <User className="nav-icon"/>
-                <p className="nav-text">Profile</p>
-              </li>
-            </Link>
-
-
-
           </ul>
-
         </div>
     );
   }

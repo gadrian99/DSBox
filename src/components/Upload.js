@@ -8,7 +8,7 @@ class Upload extends Component {
   render() {
     return (
       <>
-        <Header page="Upload a file" />
+        <Header page="Upload a file" account={this.props.account}/>
         <div className="container-fluid mt-4 text-center">
         <form className="form-wrapper"onSubmit={(event) => {
             event.preventDefault()

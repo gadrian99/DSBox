@@ -26,11 +26,12 @@ class App extends Component {
       await this.loadWeb3()
       await this.loadBlockchainData()
     } catch {
-      alert('error connecting to blockchain')
+      this.setState({ error: true })
     }
   }
 
   async loadWeb3() {
+    this.setState({ loading: true })
     if (window.ethereum) {
       window.web3 = new Web3(window.ethereum)
       await window.ethereum.enable()
@@ -39,11 +40,14 @@ class App extends Component {
       window.web3 = new Web3(window.web3.currentProvider)
     }
     else {
+      this.setState({ error: true })
       window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
     }
+    this.setState({ loading: false })
   }
 
   async loadBlockchainData() {
+    this.setState({ loading: true })
     const web3 = window.web3
     // Load account
     const accounts = await web3.eth.getAccounts()
@@ -66,12 +70,16 @@ class App extends Component {
         })
       }
     } else {
+      this.setState({ error: true })
       window.alert('DStorage contract not deployed to detected network.')
     }
+    this.setState({ loading: false })
   }
 
   // Get file from user
   captureFile = event => {
+    this.setState({ loading: true })
+
     event.preventDefault()
 
     const file = event.target.files[0]
@@ -86,6 +94,8 @@ class App extends Component {
       })
       console.log('buffer', this.state.buffer)
     }
+    this.setState({ loading: false })
+
   }
 
   uploadFile = description => {
@@ -95,6 +105,7 @@ class App extends Component {
     ipfs.add(this.state.buffer, (error, result) => {
       console.log('IPFS result', result.size)
       if(error) {
+        this.setState({ error: true })
         console.error(error)
         return
       }
@@ -112,7 +123,8 @@ class App extends Component {
        })
        window.location.reload()
       }).on('error', (e) =>{
-        window.alert('Error')
+        this.setState({ error: true })
+        window.alert('Transaction failed - Check TOS for details')
         this.setState({loading: false})
       })
     })
@@ -125,6 +137,7 @@ class App extends Component {
       dstorage: null,
       files: [],
       loading: false,
+      error: false,
       type: null,
       name: null,
       selectedPage : "home",
@@ -141,7 +154,7 @@ class App extends Component {
   }
 
   render() {
-    {if(this.state.account === '' || this.state.dstorage == null ) return(<ConnectAlert />)}
+    {if(this.state.error) return(<ConnectAlert />)}
     return (
         <div className="app">
           <Navbar account={this.state.account} setPage={this.setPage} page={this.state.selectedPage} />
@@ -170,12 +183,11 @@ class App extends Component {
             <Route
               path='/upload'
               render={(props) => (
-                <Upload {...props}  captureFile={this.captureFile} uploadFile={this.uploadFile}/>
+                <Upload {...props}  account={this.state.account} captureFile={this.captureFile} uploadFile={this.uploadFile}/>
               )}
             />
           </Switch>}
             {/* <button onClick={() => this.setState({ toolState: !this.state.toolState })}>toggle</button> */}
-
           </div>
           {this.state.toolState ? <ToolBar state={this.state.toolState}/> : null }
         </div>
