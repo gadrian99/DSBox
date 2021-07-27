@@ -2,13 +2,14 @@ import React from 'react';
 import Header from './Header'
 import { convertBytes } from './helpers';
 import moment from 'moment'
+import ContentAlert from './ContentAlert';
 
 const All = (props) => {
   console.log(props.files.length)
     return(
         <>
           <Header page= "All Files" account={props.account} />
-          {props.files.length < 1 ? <div className="content-alert"><h1>No content yet...</h1></div> : <table className="table-sm text-center" style={{ width: '100%', maxHeight: '450px', marginTop: '2rem'}}>
+          {props.files.length < 1 ? <ContentAlert /> : <table className="table-sm text-center" style={{ width: '100%', maxHeight: '450px', marginTop: '2rem'}}>
                 <thead style={{ 'fontSize': '18px' }}>
                   <tr className="bg-dark text-white">
                     <th scope="col" style={{ width: '10px'}}>ID</th>
