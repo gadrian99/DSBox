@@ -1,13 +1,13 @@
 ## ``` ThorBox - Decentralized File Storage ```
 
 
-## 💡 What is ThorBox?:
+## 💡 What is ThorBox:
 
 ThorBox is a decentralized storage protocol that lets you save files in a distributed peer-to-peer network and allows the user to access them from anywhere, at any time, forever.
 
 This protocol runs in the blockchain and also the Interplanetary File System (IPFS). This will allow us to upload files in a decentralized way and also share them with others in a trustless censorship resistant fashion.
 
-## ❓ Why ThorBox?:
+## ❓ Why ThorBox:
 
 Let's take a look at how a traditional web application would work and how it compares to our solution. Let’s use Google Drive or Dropbox for example, cloud storage services that lets you save files online and sync them to your devices. 
 
@@ -15,7 +15,7 @@ Let's take a look at how a traditional web application would work and how it com
 
 When you open your browser, let it be on your phone or on your computer, the browser talks to a server, requests and sends all the necessary code and data, including all the files in your respective account to render properly. All of this information lives on a central server and can be prone to certain drawbacks. The way these services are setup is in a very centralized model so any of your files can be censored at any time and you may also have to pay to store data for a long term basis,among many others.
 
-## 🔧 How does ThorBox work?:
+## 🔧 How does ThorBox work:
 
 By contrast, ThorBox works in a fully decentralized fashion. 
 
