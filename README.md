@@ -1,4 +1,4 @@
-## ``` ThorBox - Decentralized File Storage ```
+``` ThorBox - Decentralized File Storage ```
 
 
 ## 💡 What is ThorBox:
