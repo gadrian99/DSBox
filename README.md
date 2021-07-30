@@ -1,6 +1,3 @@
-# ``` ThorBox - Decentralized File Storage ```
-
-
 ## 💡 What is ThorBox:
 
 ThorBox is a decentralized storage protocol that lets you save files in a distributed peer-to-peer network and allows the user to access them from anywhere, at any time, forever.
