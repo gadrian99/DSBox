@@ -1,6 +1,5 @@
 import React from 'react';
 import Identicon from 'identicon.js';
-import { PlusSquare, Search, Star } from 'react-feather';
 
 function Header(props) {
     return(

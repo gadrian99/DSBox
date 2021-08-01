@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
-import { Home, Folder, Film, Image, User , CornerRightUp } from 'react-feather';
+import { Folder, Film, Image, CornerRightUp } from 'react-feather';
 import {
   Link
 } from "react-router-dom";
 
 class Navbar extends Component {
-
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return (
       <div className="navigation">
-        <img src="/assets/Logo.svg" style={{ height: '50px', width: 'auto'}} className="logo"></img>
+        <img alt="logo" src="/assets/Logo.svg" style={{ height: 'auto', width: '3.5rem'}} className="logo"></img>
           <ul className="navigation-icons">
             {/* <Link to="/">
               <li className={this.props.page === "home" ? "active" : " "} onClick={(e) => this.props.setPage("home")} >

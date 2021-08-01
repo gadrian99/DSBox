@@ -1,6 +1,5 @@
 import React from 'react'
 import { Frown } from 'react-feather'
-import { Link } from 'react-router-dom'
 
 function NotFound() {
     return(

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { convertBytes } from './helpers';
-import moment from 'moment'
+// import { convertBytes } from './helpers';
+// import moment from 'moment'
 import Header from './Header';
 import { Upload as UploadIcon} from 'react-feather'
 
