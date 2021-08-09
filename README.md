@@ -21,9 +21,10 @@ By contrast, ThorBox works in a fully decentralized fashion.
 Through use of the web browser you can connect with a blockchain wallet such as Metamask and connect to the blockchain network where all of the necessary data is stored to run the protocol. The files are stored in the decentralized and distributed Interplanetary File System (IPFS) which will allow storing these files for free for the long term and they will be censorship resistant, meaning that no central party will be able to take them down.
 
 ## Requirements:
- - Metamask Wallet
- - Test Ether from Ropsten Network on Wallet
+
+- Metamask Wallet
+- Test Ether from Ropsten Network on Wallet
 
 ## Link:
-[https://thorbox.netlify.app/](https://thorbox.netlify.app/)
 
+[https://thorbox.netlify.app/](https://thorbox.netlify.app/)
