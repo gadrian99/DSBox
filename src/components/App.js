@@ -9,6 +9,8 @@ import Upload from './Upload'
 import ConnectAlert from './ConnectAlert'
 import NotFound from './NotFound';
 
+import { withRouter } from 'react-router';
+
 
 import Web3 from 'web3';
 import './App.css';
@@ -99,7 +101,6 @@ class App extends Component {
       console.log('buffer', this.state.buffer)
     }
     this.setState({ loading: false })
-
   }
 
   uploadFile = description => {
@@ -132,6 +133,7 @@ class App extends Component {
         this.setState({loading: false})
       })
     })
+    this.props.history.push('/')
   }
 
   constructor(props) {
@@ -158,6 +160,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props)
     {if(this.state.error) return(<ConnectAlert />)}
     return (
         <div className="app">
@@ -200,4 +203,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
