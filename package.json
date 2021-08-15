@@ -26,6 +26,7 @@
     "react-feather": "^2.0.9",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
+    "react-spring": "^9.2.4",
     "truffle": "^5.1.45",
     "truffle-hdwallet-provider": "^1.0.17",
     "truffle-hdwallet-provider-privkey": "^0.3.0",
