@@ -6,12 +6,13 @@ import * as serviceWorker from './serviceWorker';
 import {BrowserRouter as Router} from "react-router-dom";
 import { createBrowserHistory } from "history";
 
-const history = createBrowserHistory();
+import Modal from 'react-modal'
 
+const history = createBrowserHistory();
 
 ReactDOM.render(
     <Router history={history}>
-        <App />
+            <App />
     </Router>,
     document.getElementById('root')
 );

@@ -4,6 +4,10 @@ import { convertBytes } from './helpers';
 import moment from 'moment'
 import ContentAlert from './ContentAlert';
 
+import Upload from './Upload'
+
+
+
 const All = (props) => {
   console.log(props.files.length)
     return(
@@ -53,7 +57,6 @@ const All = (props) => {
                   )
                 })}
               </table>}
-
         </>
     )
     // import files from blockchain to this component

@@ -1,20 +1,63 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 // import { convertBytes } from './helpers';
 // import moment from 'moment'
 import Header from './Header';
-import { Upload as UploadIcon} from 'react-feather'
+import { Upload as UploadIcon, Plus } from 'react-feather'
 
-class Upload extends Component {
+import Modal from 'react-modal'
 
-  render() {
-    return (
-      <>
-        <Header page="Upload a file" account={this.props.account}/>
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    background: '#1a1a1a',
+    border: 'none',
+    borderRadius: '40px',
+    padding: '50px 100px'
+  },
+  overlay: {
+    backgroundColor: '#27262cc2'
+  }
+}
+Modal.setAppElement('#root');
+
+function Upload(props) {
+  let fileDescription;
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  return (
+    <div>
+      <button className="add-button" onClick={openModal}><Plus size={30} /></button>
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Upload"
+      >
+      <Header page="Upload a file" account={props.account}/>
         <div className="container-fluid mt-4 text-center">
         <form className="form-wrapper"onSubmit={(event) => {
             event.preventDefault()
-            const description = this.fileDescription.value
-            this.props.uploadFile(description)
+            const description = fileDescription.value
+            props.uploadFile(description)
             }} >
             <div className="form-group">
                 <br></br>
@@ -22,21 +65,31 @@ class Upload extends Component {
                     id="fileDescription"
                     type="text"
                     maxLength="30"
-                    ref={(input) => { this.fileDescription = input }}
+                    ref={(input) => { fileDescription = input }}
                     className="form-control"
                     placeholder="Title..."
                     required />
             </div>
             <div className="preview">
-              <input type="file" onChange={this.props.captureFile} className="text-white preview-button"/>
+              <input type="file" onChange={props.captureFile} className="text-white preview-button"/>
             </div>
             <button type="submit" className="form-button"><UploadIcon style={{ marginRight: '1rem', lineHeight: '2px' }} />Upload</button>
         </form>
       </div>
-      </>
-
-    );
-  }
+      </Modal>
+    </div>
+  );
 }
+
+
+// class Upload extends Component {
+
+//   render() {
+//     return (
+
+
+//     );
+//   }
+// }
 
 export default Upload;

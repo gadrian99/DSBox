@@ -6,11 +6,10 @@ import All from './All'
 import Videos from './Videos'
 import Photos from './Photos'
 import Upload from './Upload'
-import ConnectAlert from './ConnectAlert'
+// import ConnectAlert from './ConnectAlert'
 import NotFound from './NotFound';
 
 import { withRouter } from 'react-router';
-
 
 import Web3 from 'web3';
 import './App.css';
@@ -161,7 +160,7 @@ class App extends Component {
 
   render() {
     console.log(this.props)
-    {if(this.state.error) return(<ConnectAlert />)}
+    // {if(this.state.error) return(<ConnectAlert />)}
     return (
         <div className="app">
           <Navbar account={this.state.account} setPage={this.setPage} page={this.state.selectedPage} />
@@ -187,14 +186,9 @@ class App extends Component {
                 <Photos {...props} account={this.state.account} files={this.state.files} />
               )}
             />
-            <Route
-              path='/upload'
-              render={(props) => (
-                <Upload {...props}  account={this.state.account} captureFile={this.captureFile} uploadFile={this.uploadFile}/>
-              )}
-            />
             <Route component={NotFound} />
           </Switch>}
+          <Upload account={this.state.account} captureFile={this.captureFile} uploadFile={this.uploadFile} />
             {/* <button onClick={() => this.setState({ toolState: !this.state.toolState })}>toggle</button> */}
           </div>
           {this.state.toolState ? <ToolBar state={this.state.toolState}/> : null }
@@ -203,4 +197,4 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+export default withRouter(App)

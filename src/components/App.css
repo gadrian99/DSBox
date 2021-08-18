@@ -69,11 +69,6 @@ a:hover {
   align-self: center;
 }
 
-.nav-icon {
-  align-self: center;
-  margin: 1.2rem 0 0.5rem 0;
-}
-
 .active {
   color: var(--on-primary);
   border-right: 0.2rem solid var(--on-primary);
@@ -375,4 +370,25 @@ a:hover {
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
+}
+
+.add-button {
+  display: flex;
+  background: var(--primary);
+  color: white;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 4rem;
+  position: absolute;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  transition: linear 0.2s;
+}
+
+.add-button:hover {
+  transform: scale(1.2);
+  background: var(--on-primary);
 }
