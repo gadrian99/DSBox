@@ -50,7 +50,6 @@ const All = (props) => {
                             {/* {file.fileHash.substring(0,10)}... */}
                             <img alt="preview" style={{ height: '50px' }}src={"https://ipfs.infura.io/ipfs/" + file.fileHash} />
                           </a>
-
                         </td>
                       </tr>
                     </thead>

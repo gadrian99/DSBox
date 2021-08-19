@@ -4,7 +4,6 @@ import Navbar from './Navbar'
 import ToolBar from './ToolBar'
 import All from './All'
 import Videos from './Videos'
-import Photos from './Photos'
 import Upload from './Upload'
 // import ConnectAlert from './ConnectAlert'
 import NotFound from './NotFound';
@@ -178,12 +177,6 @@ class App extends Component {
               path='/videos'
               render={(props) => (
                 <Videos {...props} account={this.state.account} files={this.state.files} />
-              )}
-            />
-            <Route
-              path='/photos'
-              render={(props) => (
-                <Photos {...props} account={this.state.account} files={this.state.files} />
               )}
             />
             <Route component={NotFound} />

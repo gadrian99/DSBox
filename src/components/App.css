@@ -392,3 +392,58 @@ a:hover {
   transform: scale(1.2);
   background: var(--on-primary);
 }
+
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30rem;
+  flex-direction: column;
+  color: white;
+}
+
+.profile-tools {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-address {
+  justify-content: center;
+  font-size: 1rem;
+  transition: 0.2s linear;
+  width: 100%;
+}
+
+.profile-address:hover {
+  color: var(--on-primary);
+}
+
+.profile-image {
+  height: 3rem;
+  width: auto;
+  transition: 0.2s linear;
+  border-radius: 5rem;
+  margin-right: 1rem;
+}
+
+.profile-button {
+  display: flex;
+  background: var(--secondary);
+  color: white;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 0.5rem;
+  transition: linear 0.2s;
+}
+
+.profile-button:hover {
+  background-color: var(--on-primary);
+}
+
+.profile-icon:hover {
+  color: var(--on-primary);
+}
