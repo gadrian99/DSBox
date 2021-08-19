@@ -2,10 +2,10 @@ import DStorage from '../abis/DStorage.json'
 import React, { Component } from 'react';
 import Navbar from './Navbar'
 import ToolBar from './ToolBar'
-import All from './All'
+import Main from './Main'
 import Videos from './Videos'
 import Upload from './Upload'
-// import ConnectAlert from './ConnectAlert'
+import ConnectAlert from './ConnectAlert'
 import NotFound from './NotFound';
 
 import { withRouter } from 'react-router';
@@ -144,25 +144,18 @@ class App extends Component {
       error: false,
       type: null,
       name: null,
-      selectedPage : "home",
       toolState: false
     }
     this.uploadFile = this.uploadFile.bind(this)
     this.captureFile = this.captureFile.bind(this)
-
-    this.setPage = this.setPage.bind(this)
-  }
-
-  setPage(page) {
-    this.setState({ selectedPage: page })
   }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     // {if(this.state.error) return(<ConnectAlert />)}
     return (
         <div className="app">
-          <Navbar account={this.state.account} setPage={this.setPage} page={this.state.selectedPage} />
+          <Navbar account={this.state.account} />
           <div className="main main-bg">
             { this.state.loading
             ? <div className="loader-wrapper"><div id="loader" className="loader"><p>Loading...</p></div></div>
@@ -170,7 +163,7 @@ class App extends Component {
             <Route
               exact path='/'
               render={(props) => (
-                <All {...props} account={this.state.account} files={this.state.files} />
+                <Main {...props} account={this.state.account} files={this.state.files} />
               )}
             />
             <Route component={NotFound} />
