@@ -44,7 +44,7 @@ function Upload(props) {
 
   return (
     <div>
-      <button className="add-button" onClick={openModal}><Plus size={30} /></button>
+      <button className="add-button" onClick={openModal}><Plus size={40} /></button>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}

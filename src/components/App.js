@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import Navbar from './Navbar'
 import ToolBar from './ToolBar'
 import Main from './Main'
-import Videos from './Videos'
 import Upload from './Upload'
 import ConnectAlert from './ConnectAlert'
 import NotFound from './NotFound';

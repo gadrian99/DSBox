@@ -193,6 +193,7 @@ a:hover {
 
 .table-row {
   background-color: var(--secondary);
+  transition: linear 0.2s;
 }
 
 .table-row:hover {
@@ -383,8 +384,8 @@ a:hover {
   border: none;
   justify-content: center;
   align-items: center;
-  height: 3rem;
-  width: 3rem;
+  height: 4.5rem;
+  width: 4.5rem;
   border-radius: 4rem;
   position: absolute;
   bottom: 2.5rem;
@@ -475,4 +476,28 @@ a:hover {
   width: 100%;
   padding-left: 0.5rem;
   outline: none;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.button-wrapper-right {
+  padding: 0.5rem;
+  border: 1px solid var(--primary);
+  border-radius: 2rem;
+}
+
+.button-wrapper-right > button {
+  background: none;
+  border: none;
+  color: white;
+  margin-left: 0.5rem;
+  transition: linear 0.4s;
+}
+
+.button-wrapper-right > button:hover {
+  color: var(--on-primary);
 }

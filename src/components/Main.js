@@ -5,25 +5,20 @@ import moment from 'moment'
 import ContentAlert from './ContentAlert';
 import { useTrail } from 'react-spring';
 
+import { Film, Image, Music, List, Grid } from 'react-feather';
+
 const Main = (props) => {
-  // const videos = props.files.filter(file => file.fileType.substring(0,5) === "video")
-  // const [filteredList, setFilteredList] = useState(files)
   const [filterType, setFilterType] = useState(null)
+  const files = (
+    filterType === 'video' ? props.files.filter(file => file.fileType.substring(0,5) === "video") :
+    filterType === 'image' ? props.files.filter(file => file.fileType.substring(0,5) === "image") :
+    filterType === 'audio' ? props.files.filter(file => file.fileType.substring(0,5) === "audio") :
+    props.files
+  )
 
   function renderTable() {
-    console.log(props.filterType)
-    const files = (
-      filterType === 'video' ? props.files.filter(file => file.fileType.substring(0,5) === "video") :
-      filterType === 'image' ? props.files.filter(file => file.fileType.substring(0,5) === "image") :
-      filterType === 'audio' ? props.files.filter(file => file.fileType.substring(0,5) === "audio") :
-      props.files
-    )
     return(
-      <>
-        <button value="video" onClick={(e) => setFilterType(e.target.value)}>Videos</button>
-        <button value="image" onClick={(e) => setFilterType(e.target.value)}>image</button>
-        <button value="audio" onClick={(e) => setFilterType(e.target.value)}>Video</button>
-        <table className="table-sm text-center" style={{ width: '100%', maxHeight: '450px', marginTop: '2rem'}}>
+      <table className="table-sm text-center" style={{ width: '100%', maxHeight: '450px', marginTop: '2rem'}}>
         <thead style={{ 'fontSize': '18px' }}>
           <tr className="bg-dark text-white">
             <th scope="col" style={{ width: '200px',  borderTopLeftRadius: '.5rem'}}>Name</th>
@@ -37,7 +32,7 @@ const Main = (props) => {
         </thead>
         { files.map((file, key) => {
           return(
-            <thead className="text-white" style={{ 'fontSize': '15px' }} key={key}>
+            <thead className="text-white" style={{ fontSize: '15px', height:'100px'  }} key={key}>
               <tr className="table-row">
                 <td className="overflow" style={{ maxWidth: '200px'}}>{file.fileName}</td>
                 <td className="overflow" style={{ maxWidth: '230px'}}>{file.fileDescription}</td>
@@ -66,6 +61,30 @@ const Main = (props) => {
             )
           })}
         </table>
+    )
+  }
+  function renderView() {
+    // const files = (
+    //   filterType === 'video' ? props.files.filter(file => file.fileType.substring(0,5) === "video") :
+    //   filterType === 'image' ? props.files.filter(file => file.fileType.substring(0,5) === "image") :
+    //   filterType === 'audio' ? props.files.filter(file => file.fileType.substring(0,5) === "audio") :
+    //   props.files
+    // )
+    return(
+      <>
+        <div className="button-wrapper">
+          <div className="button-wrapper-left">
+            <button><List /></button>
+            <button><Grid /></button>
+          </div>
+          <div className="button-wrapper-right">
+            <button onClick={(e) => setFilterType(e.target.value)}><List size={30}/></button>
+            <button value="video" onClick={(e) => setFilterType(e.target.value)}><Film size={30}/></button>
+            <button value="image" onClick={(e) => setFilterType(e.target.value)}><Image size={30}/></button>
+            <button value="audio" onClick={(e) => setFilterType(e.target.value)}><Music size={30}/></button>
+          </div>
+        </div>
+        {renderTable()}
       </>
     )
   }
@@ -74,7 +93,7 @@ const Main = (props) => {
         {/* {console.log(files)} */}
           {/* <button onClick={filterImages}>Images</button> */}
           <Header account={props.account} />
-          {renderTable()}
+          {renderView()}
           {/* {files.length < 1 ? <ContentAlert /> : } */}
 
         </>
