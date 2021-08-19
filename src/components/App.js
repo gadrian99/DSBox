@@ -173,12 +173,6 @@ class App extends Component {
                 <All {...props} account={this.state.account} files={this.state.files} />
               )}
             />
-            <Route
-              path='/videos'
-              render={(props) => (
-                <Videos {...props} account={this.state.account} files={this.state.files} />
-              )}
-            />
             <Route component={NotFound} />
           </Switch>}
           <Upload account={this.state.account} captureFile={this.captureFile} uploadFile={this.uploadFile} />

@@ -1,19 +1,20 @@
 import React from 'react';
 import Identicon from 'identicon.js';
+import SearchBar from './SearchBar';
 
 function Header(props) {
     return(
         <div className="header">
-            <p style={{ fontFamily: 'Oleo Script, cursive'}}>{props.page}</p>
+            <SearchBar />
             <div className="header-tools">
-                <a target="_blank"
+                {/* <a target="_blank"
                   alt=""
                   style={{ fontFamily: 'Oleo Script'}}
                   className="header-address"
                   rel="noopener noreferrer"
                   href={"https://etherscan.io/address/" + props.account}>
                     {props.account ? props.account.substring(0,10) : '0x0'}...{props.account ? props.account.substring(35,42) : '0x0'}
-                </a>
+                </a> */}
                 {props.account
                 ? <img
                     alt=""

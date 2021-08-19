@@ -52,7 +52,6 @@ function Upload(props) {
         style={customStyles}
         contentLabel="Upload"
       >
-      <Header page="Upload a file" account={props.account}/>
         <div className="container-fluid mt-4 text-center">
         <form className="form-wrapper"onSubmit={(event) => {
             event.preventDefault()
