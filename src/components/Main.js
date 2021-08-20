@@ -8,6 +8,7 @@ import { useTrail } from 'react-spring';
 import { Film, Image, Music, List, Grid } from 'react-feather';
 
 const Main = (props) => {
+  const [view, setView] = useState('grid')
   const [filterType, setFilterType] = useState(null)
   const files = (
     filterType === 'video' ? props.files.filter(file => file.fileType.substring(0,5) === "video") :
@@ -63,6 +64,15 @@ const Main = (props) => {
         </table>
     )
   }
+
+  function renderGrid() {
+    return(
+      <div>
+        <h1>Grid</h1>
+      </div>
+    )
+  }
+
   function renderView() {
     // const files = (
     //   filterType === 'video' ? props.files.filter(file => file.fileType.substring(0,5) === "video") :
@@ -84,7 +94,7 @@ const Main = (props) => {
             <button value="audio" onClick={(e) => setFilterType(e.target.value)}><Music size={30}/></button>
           </div>
         </div>
-        {renderTable()}
+        {view === 'list' ? renderTable() : renderGrid()}
       </>
     )
   }
