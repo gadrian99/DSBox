@@ -1,6 +1,7 @@
 import React from 'react';
 import Identicon from 'identicon.js';
 import SearchBar from './SearchBar';
+import { Bell } from 'react-feather'
 
 function Header(props) {
     return(
@@ -15,6 +16,7 @@ function Header(props) {
                   href={"https://etherscan.io/address/" + props.account}>
                     {props.account ? props.account.substring(0,10) : '0x0'}...{props.account ? props.account.substring(35,42) : '0x0'}
                 </a> */}
+                <Bell size={30} style={{ marginRight: '1rem'}}/>
                 {props.account
                 ? <img
                     alt=""

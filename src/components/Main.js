@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './Header'
 import { convertBytes } from './helpers';
 import moment from 'moment'
@@ -8,14 +8,24 @@ import { useTrail } from 'react-spring';
 import { Film, Image, Music, List, Grid } from 'react-feather';
 
 const Main = (props) => {
-  const [view, setView] = useState('grid')
-  const [filterType, setFilterType] = useState(null)
-  const files = (
-    filterType === 'video' ? props.files.filter(file => file.fileType.substring(0,5) === "video") :
-    filterType === 'image' ? props.files.filter(file => file.fileType.substring(0,5) === "image") :
-    filterType === 'audio' ? props.files.filter(file => file.fileType.substring(0,5) === "audio") :
-    props.files
-  )
+  const [view, setView] = useState('list')
+  const [files, setFiles] = useState(props.files)
+
+  function filterFiles(e) {
+    switch(e) {
+      case "video":
+        setFiles(props.files.filter(file => file.fileType.substring(0,5) === "video"))
+        break
+      case "image":
+        setFiles(props.files.filter(file => file.fileType.substring(0,5) === "image"))
+        break
+      case "audio":
+        setFiles(props.files.filter(file => file.fileType.substring(0,5) === "audio"))
+        break
+      default:
+        setFiles(props.files)
+    }
+  }
 
   function renderTable() {
     return(
@@ -67,7 +77,7 @@ const Main = (props) => {
 
   function renderGrid() {
     return(
-      <div>
+      <div style={{ width: '100%', maxHeight: '450px', marginTop: '2rem'}}>
         <h1>Grid</h1>
       </div>
     )
@@ -85,13 +95,16 @@ const Main = (props) => {
         <div className="button-wrapper">
           <div className="button-wrapper-left">
             <button><List /></button>
-            <button><Grid /></button>
+            <button value="grid" onClick={(e) => {
+              e.preventDefault()
+              setView(e.target.value)
+            }}><Grid /></button>
           </div>
           <div className="button-wrapper-right">
-            <button onClick={(e) => setFilterType(e.target.value)}><List size={30}/></button>
-            <button value="video" onClick={(e) => setFilterType(e.target.value)}><Film size={30}/></button>
-            <button value="image" onClick={(e) => setFilterType(e.target.value)}><Image size={30}/></button>
-            <button value="audio" onClick={(e) => setFilterType(e.target.value)}><Music size={30}/></button>
+            <button type="button" onClick={() =>filterFiles()}><List size={30}/></button>
+            <button type="button" value="video" onClick={() => filterFiles('video')}><Film size={30}/></button>
+            <button type="button" value="image" onClick={() => filterFiles('image')}><Image size={30}/></button>
+            <button type="submit" value="audio" onClick={() => filterFiles('audio')}><Music size={30}/></button>
           </div>
         </div>
         {view === 'list' ? renderTable() : renderGrid()}

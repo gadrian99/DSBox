@@ -101,6 +101,7 @@ a:hover {
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .header-address {
@@ -117,12 +118,7 @@ a:hover {
   height: 50px;
   width: auto;
   transition: 0.2s linear;
-  border-radius: 0.2rem;
-}
-
-.header-image:hover {
-  padding: 0.1rem;
-  border: 2px dashed var(--on-primary);
+  border-radius: 5rem;
 }
 
 .overflow {
