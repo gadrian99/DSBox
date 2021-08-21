@@ -9,18 +9,24 @@ import { Film, Image, Music, List, Grid } from 'react-feather';
 
 const Main = (props) => {
   const [view, setView] = useState('grid')
+  const [filter, setFilter] = useState('')
   const [files, setFiles] = useState(props.files)
+
+  console.log(view, filter)
 
   function filterFiles(e) {
     switch(e) {
       case "video":
         setFiles(props.files.filter(file => file.fileType.substring(0,5) === "video"))
+        setFilter("video")
         break
       case "image":
         setFiles(props.files.filter(file => file.fileType.substring(0,5) === "image"))
+        setFilter("image")
         break
       case "audio":
         setFiles(props.files.filter(file => file.fileType.substring(0,5) === "audio"))
+        setFilter("audio")
         break
       default:
         setFiles(props.files)
@@ -103,14 +109,14 @@ const Main = (props) => {
       <>
         <div className="button-wrapper">
           <div className="button-wrapper-left">
-            <button onClick={() => setView('list')}><List size={30}/></button>
-            <button onClick={() => setView('grid')}><Grid size={30}/></button>
+            <button className={view === 'list' && 'active'} onClick={() => setView('list')}><List size={30}/></button>
+            <button className={view === 'grid' && 'active'} onClick={() => setView('grid')}><Grid size={30}/></button>
           </div>
           <div className="button-wrapper-right">
-            <button type="button" onClick={() =>filterFiles()}><List size={30}/></button>
-            <button type="button" value="video" onClick={() => filterFiles('video')}><Film size={30}/></button>
-            <button type="button" value="image" onClick={() => filterFiles('image')}><Image size={30}/></button>
-            <button type="submit" value="audio" onClick={() => filterFiles('audio')}><Music size={30}/></button>
+            <button type="button" className={filter === '' && 'active'} onClick={() =>filterFiles()}><List size={30}/></button>
+            <button type="button" className={filter === 'video' && 'active'} onClick={() => filterFiles('video')}><Film size={30}/></button>
+            <button type="button" className={filter === 'image' && 'active'} onClick={() => filterFiles('image')}><Image size={30}/></button>
+            <button type="submit" className={filter === 'audio' && 'active'} onClick={() => filterFiles('audio')}><Music size={30}/></button>
           </div>
         </div>
         {view === 'list' ? renderTable() : renderGrid()}
@@ -127,7 +133,7 @@ const Main = (props) => {
 
         </>
     )
-    // import files from blockchain to this component
+     // import files from blockchain to this component
 }
 
 export default Main

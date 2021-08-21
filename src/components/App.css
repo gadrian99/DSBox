@@ -482,7 +482,6 @@ a:hover {
 
 .button-wrapper-right {
   padding: 0.5rem;
-  border: 1px solid var(--primary);
   border-radius: 2rem;
 }
 
@@ -531,4 +530,12 @@ a:hover {
   width: 12rem;
   word-wrap: none;
   margin-bottom: 1rem;
+}
+
+.active {
+  color: var(--on-primary) !important;
+}
+
+.unactive {
+  color: white;
 }
