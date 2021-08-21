@@ -8,7 +8,7 @@ import { useTrail } from 'react-spring';
 import { Film, Image, Music, List, Grid } from 'react-feather';
 
 const Main = (props) => {
-  const [view, setView] = useState('list')
+  const [view, setView] = useState('grid')
   const [files, setFiles] = useState(props.files)
 
   function filterFiles(e) {
@@ -77,8 +77,17 @@ const Main = (props) => {
 
   function renderGrid() {
     return(
-      <div style={{ width: '100%', maxHeight: '450px', marginTop: '2rem'}}>
-        <h1>Grid</h1>
+      <div className="grid-container">
+        {files.map((file, key) => {
+        return(
+          <div className="card">
+            <img style={{ height: '7rem'}}/>
+            <div style={{ textAlign: 'center', height: '1rem'}}>
+              <p className="overflow">{file.fileName.substring(0,20)}...</p>
+            </div>
+          </div>
+        )
+        })}
       </div>
     )
   }
@@ -94,11 +103,8 @@ const Main = (props) => {
       <>
         <div className="button-wrapper">
           <div className="button-wrapper-left">
-            <button><List /></button>
-            <button value="grid" onClick={(e) => {
-              e.preventDefault()
-              setView(e.target.value)
-            }}><Grid /></button>
+            <button onClick={() => setView('list')}><List size={30}/></button>
+            <button onClick={() => setView('grid')}><Grid size={30}/></button>
           </div>
           <div className="button-wrapper-right">
             <button type="button" onClick={() =>filterFiles()}><List size={30}/></button>

@@ -497,3 +497,38 @@ a:hover {
 .button-wrapper-right > button:hover {
   color: var(--on-primary);
 }
+
+.button-wrapper-left > button {
+  background: none;
+  border: none;
+  color: white;
+  margin-left: 0.5rem;
+  transition: linear 0.4s;
+}
+
+.button-wrapper-left {
+  display: flex;
+}
+
+.button-wrapper-left > button:hover {
+  color: var(--on-primary);
+}
+
+.grid-container {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  grid-auto-rows: repeat(auto-fit, minmax(12rem, 1fr));
+  /* grid-gap: 8px 8px; */
+  justify-self: center;
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 12rem;
+  width: 12rem;
+  word-wrap: none;
+  margin-bottom: 1rem;
+}
