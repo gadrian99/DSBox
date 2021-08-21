@@ -516,20 +516,34 @@ a:hover {
 .grid-container {
   margin-top: 2rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-  grid-auto-rows: repeat(auto-fit, minmax(12rem, 1fr));
-  /* grid-gap: 8px 8px; */
-  justify-self: center;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+  grid-template-rows: repeat(auto-fit, minmax(250px, 250px));
+  grid-gap: 1rem;
   width: 100%;
 }
 
-.card {
+.card-container {
+  background-color: var(--secondary);
   display: flex;
   flex-direction: column;
-  height: 12rem;
-  width: 12rem;
+  justify-content: center;
   word-wrap: none;
-  margin-bottom: 1rem;
+  color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.card-container:hover {
+  background-color: var(--on-primary);
+}
+
+.card-text {
+  margin-top: 0.8rem;
+  transition: linear 5s;
+}
+
+.card-text:hover {
+  transform: translateX(-200%);
 }
 
 .active {

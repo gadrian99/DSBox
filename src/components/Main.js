@@ -12,7 +12,7 @@ const Main = (props) => {
   const [filter, setFilter] = useState('')
   const [files, setFiles] = useState(props.files)
 
-  console.log(view, filter)
+  // create function that renders specialicons instead of ugly images
 
   function filterFiles(e) {
     switch(e) {
@@ -86,10 +86,10 @@ const Main = (props) => {
       <div className="grid-container">
         {files.map((file, key) => {
         return(
-          <div className="card">
-            <img style={{ height: '7rem'}}/>
+          <div className="card-container">
+            <img alt="preview" style={{ height: '7rem' }}src={"https://ipfs.infura.io/ipfs/" + file.fileHash} />
             <div style={{ textAlign: 'center', height: '1rem'}}>
-              <p className="overflow">{file.fileName.substring(0,20)}...</p>
+              <p className="overflow card-text">{file.fileName.substring(0,10)}...</p>
             </div>
           </div>
         )
