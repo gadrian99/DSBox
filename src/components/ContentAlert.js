@@ -5,7 +5,7 @@ function ContentAlert() {
     return (
         <div className="content-alert">
             <h3 className="content-alert-text">No content yet...</h3>
-            <Link className="form-button" to='/upload'>Add your first file</Link>
+            <p>Upload your first file by clicking the big button below</p>
         </div>
     )
 }

@@ -154,7 +154,7 @@ class App extends Component {
     // {if(this.state.error) return(<ConnectAlert />)}
     return (
         <div className="app">
-          <Navbar account={this.state.account} />
+          <Navbar account={this.state.account} files={this.state.files} />
           <div className="main main-bg">
             { this.state.loading
             ? <div className="loader-wrapper"><div id="loader" className="loader"><p>Loading...</p></div></div>

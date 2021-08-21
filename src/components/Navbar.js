@@ -6,7 +6,7 @@ class Navbar extends Component {
     return (
       <div className="navigation">
         <img alt="logo" src="/assets/Logo.svg" style={{ height: 'auto', width: '3.5rem'}} className="logo"></img>
-        <Profile account={this.props.account} />
+        <Profile account={this.props.account} files={this.props.files}/>
       </div>
     );
   }

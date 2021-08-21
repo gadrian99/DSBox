@@ -6,6 +6,7 @@ import ContentAlert from './ContentAlert';
 import { useTrail } from 'react-spring';
 
 import { Film, Image, Music, List, Grid } from 'react-feather';
+import { ReactComponent as Icon } from '../formats/png-file-extension-interface-symbol.svg'
 
 const Main = (props) => {
   const [view, setView] = useState('grid')
@@ -87,7 +88,8 @@ const Main = (props) => {
         {files.map((file, key) => {
         return(
           <div className="card-container">
-            <img alt="preview" style={{ height: '7rem' }}src={"https://ipfs.infura.io/ipfs/" + file.fileHash} />
+            {/* <img alt="preview" style={{ height: '7rem' }}src={"https://ipfs.infura.io/ipfs/" + file.fileHash} /> */}
+            <Icon />
             <div style={{ textAlign: 'center', height: '1rem'}}>
               <p className="overflow card-text">{file.fileName.substring(0,10)}...</p>
             </div>
@@ -128,8 +130,7 @@ const Main = (props) => {
         {/* {console.log(files)} */}
           {/* <button onClick={filterImages}>Images</button> */}
           <Header account={props.account} />
-          {renderView()}
-          {/* {files.length < 1 ? <ContentAlert /> : } */}
+          {files.length < 1 ? <ContentAlert /> : renderView()}
 
         </>
     )

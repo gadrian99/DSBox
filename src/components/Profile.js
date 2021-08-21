@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Identicon from 'identicon.js';
 import Modal from 'react-modal'
 import { User } from 'react-feather';
@@ -23,7 +23,8 @@ const customStyles = {
 Modal.setAppElement('#root');
 
 function Profile(props) {
-    const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [modalIsOpen, setIsOpen] = useState(false);
+    const [totalSize, setTotalSize] = useState('0')
 
     function openModal() {
         setIsOpen(true);
@@ -78,7 +79,7 @@ function Profile(props) {
                         <div className="file-container-right"></div>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-around', width: '100%', padding: '1rem 0', borderBottom: '1px solid white' }}>
-                        <p>Total Files:</p>
+                        <p>Total Files: {props.files.length}</p>
                         <p>Used Space:</p>
                     </div>
                     <img src="/assets/Colored-black.svg" style={{ height: '2rem', marginTop: '1rem' }}/>
