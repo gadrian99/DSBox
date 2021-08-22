@@ -28,7 +28,7 @@ function Profile(props) {
 
     function countFiles() {
         let count = 0
-        props.files.forEach((file) => {
+         props.files.forEach((file) => {
             count += parseInt(file.fileSize, 10)
         })
        return (convertBytes(count.toString()))
@@ -48,7 +48,7 @@ function Profile(props) {
     }
     return (
         <div>
-            <button className="profile-button" onClick={openModal}><User color="white" size={40} /></button>
+            <button className="profile-button" onClick={openModal}><User color="white" size={30} /></button>
             <Modal
                 isOpen={modalIsOpen}
                 onAfterOpen={afterOpenModal}
@@ -71,7 +71,7 @@ function Profile(props) {
                             }
                             <a target="_blank"
                             alt=""
-                            style={{ fontFamily: 'Oleo Script'}}
+                            // style={{ fontFamily: 'Oleo Script'}}
                             className="profile-address"
                             rel="noopener noreferrer"
                             href={"https://etherscan.io/address/" + props.account}>

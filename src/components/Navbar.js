@@ -5,7 +5,7 @@ class Navbar extends Component {
   render() {
     return (
       <div className="navigation">
-        <img alt="logo" src="/assets/Logo.svg" style={{ height: 'auto', width: '3.5rem'}} className="logo"></img>
+        <img alt="logo" src="/assets/Logo.svg" className="logo"></img>
         <Profile account={this.props.account} files={this.props.files}/>
       </div>
     );

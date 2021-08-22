@@ -3,10 +3,13 @@ import { Search } from 'react-feather'
 
 function SearchBar() {
     return (
-        <div style={{ width: '100%' }} className="search-bar">
-            <Search className="search-icon" />
-            <input className="search-input" placeholder="Search..." />
-        </div>
+        <>
+            <img alt="logo" src="/assets/Logo.svg" className="logo"></img>
+            <div style={{ width: '100%' }} className="search-bar">
+                <Search className="search-icon" />
+                <input className="search-input" placeholder="Search..." />
+            </div>
+        </>
     )
 }
 

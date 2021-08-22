@@ -127,9 +127,9 @@ const Main = (props) => {
   }
     return(
         <>
-        {/* {console.log(files)} */}
+        {console.log(files)}
           {/* <button onClick={filterImages}>Images</button> */}
-          <Header account={props.account} />
+          <Header account={props.account} files={props.files} />
           {files.length < 1 ? <ContentAlert /> : renderView()}
 
         </>

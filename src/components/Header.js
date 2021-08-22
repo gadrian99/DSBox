@@ -1,6 +1,7 @@
 import React from 'react';
 import Identicon from 'identicon.js';
 import SearchBar from './SearchBar';
+import Profile from './Profile';
 import { Bell } from 'react-feather'
 
 function Header(props) {
@@ -17,7 +18,7 @@ function Header(props) {
                     {props.account ? props.account.substring(0,10) : '0x0'}...{props.account ? props.account.substring(35,42) : '0x0'}
                 </a> */}
                 <Bell size={30} style={{ marginRight: '1rem'}}/>
-                {props.account
+                {/* {props.account
                 ? <img
                     alt=""
                     className="header-image"
@@ -26,7 +27,8 @@ function Header(props) {
                     src={`data:image/png;base64,${new Identicon(props.account, 30).toString()}`}
                   />
                 : <span></span>
-                }
+                } */}
+                <Profile account={props.account} files={props.files} />
             </div>
         </div>
     )
