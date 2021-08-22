@@ -1,6 +1,7 @@
 import React from 'react';
 import Identicon from 'identicon.js';
 import SearchBar from './SearchBar';
+import Upload from './Upload';
 import Profile from './Profile';
 import { Bell } from 'react-feather'
 
@@ -17,6 +18,7 @@ function Header(props) {
                   href={"https://etherscan.io/address/" + props.account}>
                     {props.account ? props.account.substring(0,10) : '0x0'}...{props.account ? props.account.substring(35,42) : '0x0'}
                 </a> */}
+                <Upload />
                 <Bell size={30} style={{ marginRight: '1rem'}}/>
                 {/* {props.account
                 ? <img
