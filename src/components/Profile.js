@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Identicon from 'identicon.js';
 import Modal from 'react-modal'
+import { convertBytes } from './helpers';
 import { User } from 'react-feather';
 
 const customStyles = {
@@ -24,7 +25,14 @@ Modal.setAppElement('#root');
 
 function Profile(props) {
     const [modalIsOpen, setIsOpen] = useState(false);
-    const [totalSize, setTotalSize] = useState('0')
+
+    function countFiles() {
+        let count = 0
+        props.files.forEach((file) => {
+            count += parseInt(file.fileSize, 10)
+        })
+       return (convertBytes(count.toString()))
+    }
 
     function openModal() {
         setIsOpen(true);
@@ -78,9 +86,10 @@ function Profile(props) {
                         <div className="file-container-left"></div>
                         <div className="file-container-right"></div>
                     </div>
+
                     <div style={{ display: 'flex', justifyContent: 'space-around', width: '100%', padding: '1rem 0', borderBottom: '1px solid white' }}>
                         <p>Total Files: {props.files.length}</p>
-                        <p>Used Space:</p>
+                        <p>Used Space: {countFiles()}</p>
                     </div>
                     <img src="/assets/Colored-black.svg" style={{ height: '2rem', marginTop: '1rem' }}/>
                 </div>
