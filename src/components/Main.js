@@ -9,7 +9,7 @@ import { Film, Image, Music, List, Grid, Download, Eye, Share } from 'react-feat
 import { ReactComponent as Icon } from '../formats/png-file-extension-interface-symbol.svg'
 
 const Main = (props) => {
-  const [view, setView] = useState('list')
+  const [view, setView] = useState('grid')
   const [filter, setFilter] = useState('')
   const [files, setFiles] = useState(props.files)
 
@@ -93,8 +93,8 @@ const Main = (props) => {
         {files.map((file, key) => {
         return(
           <div className="card-container">
-            {/* <img alt="preview" style={{ height: '7rem' }}src={"https://ipfs.infura.io/ipfs/" + file.fileHash} /> */}
-            <Icon />
+            <img alt="preview" style={{ height: '200px', maxWidth: '100%' }}src={"https://ipfs.infura.io/ipfs/" + file.fileHash} />
+            {/* <Icon /> */}
             <div style={{ textAlign: 'center', height: '1rem'}}>
               <p className="overflow card-text">{file.fileName.substring(0,10)}...</p>
             </div>
