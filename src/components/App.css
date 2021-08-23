@@ -527,6 +527,7 @@ a:hover {
   justify-content: space-evenly;
   flex-wrap: wrap;
   grid-template-columns: repeat(auto-fill, 250px);
+  grid-template-rows: repeat(auto-fill, 250px);
   grid-gap: 1rem;
   width: 100%;
   height: 69vh;
