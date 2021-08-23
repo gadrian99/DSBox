@@ -26,11 +26,12 @@ a:hover {
   display: flex;
   width: 100vw;
   justify-content: space-between;
-  max-height: 100vh;
+  height: 100vh;
+  /* overflow: hidden; */
 }
 
 .logo {
-  height: 50px;
+  height: 4.5rem;
   margin-right: 1rem;
   width: auto;
 }
@@ -96,6 +97,7 @@ a:hover {
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 2rem;
   color: white;
 }
@@ -514,6 +516,11 @@ a:hover {
   color: var(--on-primary);
 }
 
+.table-container {
+  height: 70vh;
+  overflow: auto;
+}
+
 .grid-container {
   margin-top: 2rem;
   display: grid;
@@ -535,16 +542,19 @@ a:hover {
   border-radius: 1rem;
 }
 
-.grid-container::-webkit-scrollbar {
+.grid-container::-webkit-scrollbar,
+.table-container::-webkit-scrollbar {
   width: 0.5em;
 }
 
-.grid-container::-webkit-scrollbar-track {
+.grid-container::-webkit-scrollbar-track,
+.table-container::-webkit-scrollbar-track {
   box-shadow: 0 0 6px var(--primary);
   border-radius: 1rem;
 }
 
-.grid-container::-webkit-scrollbar-thumb {
+.grid-container::-webkit-scrollbar-thumb,
+.table-container::-webkit-scrollbar-thumb {
   background-color: var(--on-primary);
   border-radius: 1rem;
 }

@@ -21,7 +21,7 @@ const customStyles = {
     backgroundColor: '#27262ce9'
   }
 }
-Modal.setAppElement('#root');
+// Modal.setAppElement('#root');
 
 function Profile(props) {
     const [modalIsOpen, setIsOpen] = useState(false);

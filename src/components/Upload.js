@@ -23,7 +23,7 @@ const customStyles = {
     backgroundColor: '#27262cc2'
   }
 }
-Modal.setAppElement('#root');
+// Modal.setAppElement('#root');
 
 function Upload(props) {
   let fileDescription;
@@ -79,16 +79,5 @@ function Upload(props) {
     </div>
   );
 }
-
-
-// class Upload extends Component {
-
-//   render() {
-//     return (
-
-
-//     );
-//   }
-// }
 
 export default Upload;

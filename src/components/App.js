@@ -162,12 +162,11 @@ class App extends Component {
             <Route
               exact path='/'
               render={(props) => (
-                <Main {...props} account={this.state.account} files={this.state.files} />
+                <Main {...props} account={this.state.account} files={this.state.files} captureFile={this.captureFile} uploadFile={this.uploadFile} />
               )}
             />
             <Route component={NotFound} />
           </Switch>}
-          <Upload account={this.state.account} captureFile={this.captureFile} uploadFile={this.uploadFile} />
             {/* <button onClick={() => this.setState({ toolState: !this.state.toolState })}>toggle</button> */}
           </div>
           {this.state.toolState ? <ToolBar state={this.state.toolState}/> : null }

@@ -18,7 +18,7 @@ function Header(props) {
                   href={"https://etherscan.io/address/" + props.account}>
                     {props.account ? props.account.substring(0,10) : '0x0'}...{props.account ? props.account.substring(35,42) : '0x0'}
                 </a> */}
-                <Upload />
+                <Upload captureFile={props.captureFile} uploadFile={props.uploadFile} />
                 <Bell size={30} style={{ marginRight: '1rem'}}/>
                 {/* {props.account
                 ? <img
