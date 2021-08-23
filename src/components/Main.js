@@ -96,7 +96,7 @@ const Main = (props) => {
             <img alt="preview" style={{ height: '200px', maxWidth: '100%' }}src={"https://ipfs.infura.io/ipfs/" + file.fileHash} />
             {/* <Icon /> */}
             <div style={{ textAlign: 'center', height: '1rem'}}>
-              <p className="overflow card-text">{file.fileName.substring(0,10)}...</p>
+              <p className="overflow card-text">{file.fileName.substring(0,20)}...</p>
             </div>
           </div>
         )

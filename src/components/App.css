@@ -570,7 +570,7 @@ a:hover {
 
 .card-text {
   margin-top: 0.8rem;
-  transition: linear 5s;
+  font-size: 16px;
 }
 
 .active {
