@@ -9,7 +9,7 @@ import { Film, Image, Music, List, Grid, Download, Eye, ExternalLink } from 'rea
 import { ReactComponent as Picture } from '../formats/png-file-extension-interface-symbol.svg'
 
 const Main = (props) => {
-  const [view, setView] = useState('grid')
+  const [view, setView] = useState('list')
   const [filter, setFilter] = useState('')
   const [files, setFiles] = useState(props.files)
 
@@ -51,7 +51,7 @@ const Main = (props) => {
         </thead>
         { files.map((file, key) => {
           return(
-            <thead className="text-white" style={{ fontSize: '15px', height:'100px', width: '100%', cursor: 'pointer'  }} key={key}>
+            <thead className="text-white" style={{ fontSize: '15px', width: '100%', cursor: 'pointer', height: '75px'  }} key={key}>
               <tr className="table-row">
                 <td className="overflow" style={{ maxWidth: '200px'}}>{file.fileName}</td>
                 {/* <td className="overflow" style={{ maxWidth: '230px'}}>{file.fileDescription}</td> */}

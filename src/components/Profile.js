@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Identicon from 'identicon.js';
 import Modal from 'react-modal'
 import { convertBytes } from './helpers';
-import { User } from 'react-feather';
+import { User, Sun, Moon, File, Film, Image, Music } from 'react-feather';
 
 const customStyles = {
   content: {
@@ -78,20 +78,52 @@ function Profile(props) {
                                 {props.account ? props.account.substring(0,10) : '0x0'}...{props.account ? props.account.substring(35,42) : '0x0'}
                             </a>
                         </div>
-                        <div>
-                            <button>Toggler</button>
+                        <div style={{ display: 'flex', alignItems: 'center'}}>
+                            <button className="theme-button brd-rd-left"><Sun /></button>
+                            <button className="theme-button brd-rd-right"><Moon /></button>
                         </div>
                     </div>
                     <div className="file-container">
-                        <div className="file-container-left"></div>
-                        <div className="file-container-right"></div>
+                        <div className="file-container-left">
+                            <div className="file-list" style={{ marginBottom: '.5rem'}}>
+                                <File size={50} strokeWidth={1}/>
+                                <div style={{display: 'block', marginLeft: '.5rem' }}>
+                                    <p>Documents</p>
+                                    <p>{props.files.length}</p>
+                                </div>
+                            </div>
+                            <div className="file-list">
+                                <Music size={50} strokeWidth={1}/>
+                                <div style={{display: 'block', marginLeft: '.5rem' }}>
+                                    <p>Audios</p>
+                                    <p>{props.files.length}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="file-container-right">
+                            <div className="file-list" style={{ marginBottom: '.5rem'}}>
+                                <Image size={50} strokeWidth={1}/>
+                                <div style={{display: 'block', marginLeft: '.5rem' }}>
+                                    <p>Images</p>
+                                    <p>{props.files.length}</p>
+                                </div>
+                            </div>
+                            <div className="file-list">
+                                <Film size={50} strokeWidth={1}/>
+                                <div style={{display: 'block', marginLeft: '.5rem' }}>
+                                    <p>Videos</p>
+                                    <p>{props.files.length}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div style={{ display: 'flex', justifyContent: 'space-around', width: '100%', padding: '1rem 0', borderBottom: '1px solid white' }}>
                         <p>Total Files: {props.files.length}</p>
                         <p>Used Space: {countFiles()}</p>
                     </div>
-                    <img src="/assets/Colored-black.svg" style={{ height: '2rem', marginTop: '1rem' }}/>
+                    <img src="/assets/Colored-black.svg" style={{ height: '2rem', margin: '.5rem 0' }}/>
+                    <small>App version 1.2</small>
                 </div>
             </Modal>
         </div>

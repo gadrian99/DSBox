@@ -22,6 +22,10 @@ a:hover {
   text-decoration: none;
 }
 
+p {
+  margin: 0;
+}
+
 .app {
   display: flex;
   width: 100vw;
@@ -448,8 +452,29 @@ a:hover {
   background-color: var(--on-primary);
 }
 
-.profile-icon:hover {
-  color: var(--on-primary);
+.theme-button {
+  display: flex;
+  background: var(--secondary);
+  color: white;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  border-radius: 0.5rem;
+  transition: linear 0.2s;
+}
+
+.brd-rd-left {
+  border-radius: 1rem 0 0 1rem;
+}
+
+.brd-rd-right {
+  border-radius: 0 1rem 1rem 0;
+}
+
+.theme-button:hover {
+  background-color: var(--on-primary);
 }
 
 .search-bar {
@@ -517,7 +542,7 @@ a:hover {
 }
 
 .table-container {
-  height: 70vh;
+  max-height: 70vh;
   overflow: auto;
   display: flex;
   justify-content: center;
@@ -604,5 +629,41 @@ a:hover {
   padding: 0.5rem;
 }
 
-.list-element {
+.file-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  width: 27rem;
+}
+
+.file-container-left {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0 0.5rem;
+}
+
+.file-container-right {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0 0.5rem;
+}
+
+.file-list {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 1rem;
+  align-items: center;
+  width: 12rem;
+  height: 4rem;
+  border-radius: 1rem;
+  background-color: var(--secondary);
+  transition: 0.2s linear;
+}
+
+.file-list:hover {
+  background-color: var(--on-primary);
 }
