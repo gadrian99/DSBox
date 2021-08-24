@@ -5,8 +5,8 @@ import moment from 'moment'
 import ContentAlert from './ContentAlert';
 import { useTrail } from 'react-spring';
 
-import { Film, Image, Music, List, Grid, Download, Eye, Share } from 'react-feather';
-import { ReactComponent as Icon } from '../formats/png-file-extension-interface-symbol.svg'
+import { Film, Image, Music, List, Grid, Download, Eye, ExternalLink } from 'react-feather';
+import { ReactComponent as Picture } from '../formats/png-file-extension-interface-symbol.svg'
 
 const Main = (props) => {
   const [view, setView] = useState('grid')
@@ -37,7 +37,7 @@ const Main = (props) => {
   function renderTable() {
     return(
       <div className="table-container">
-        <table className="table-sm text-center" style={{ width: '100%', marginTop: '2rem' }}>
+        <table className="table-sm text-center" style={{ width: '85vw', marginTop: '2rem' }}>
         <thead style={{ 'fontSize': '18px' }}>
           <tr className="bg-dark text-white">
             <th scope="col" style={{ width: '200px',  borderTopLeftRadius: '.5rem'}}>Name</th>
@@ -75,8 +75,8 @@ const Main = (props) => {
                     <img alt="preview" style={{ height: '50px' }}src={"https://ipfs.infura.io/ipfs/" + file.fileHash} />
                   </a> */}
                   <Download />
-                  <Eye style={{ margin: '0 .8rem' }}/>
-                  <Share />
+                  <Eye style={{ margin: '0 1rem' }}/>
+                  <ExternalLink />
                 </td>
               </tr>
             </thead>
@@ -92,10 +92,11 @@ const Main = (props) => {
       <div className="grid-container">
         {files.map((file, key) => {
         return(
-          <div className="card-container">
-            <img alt="preview" style={{ height: '200px', maxWidth: '100%' }}src={"https://ipfs.infura.io/ipfs/" + file.fileHash} />
-            {/* <Icon /> */}
-            <div style={{ textAlign: 'center', height: '1rem'}}>
+          <div className="card-container" key={key}>
+            { file.fileType.split('/', 1)[0] === "image"
+              ? <img alt="preview" style={{ height: '200px', width: '200px', borderRadius: '1rem'}} src={"https://ipfs.infura.io/ipfs/" + file.fileHash} />
+              : <div style={{ height: '200px', width: '200px', display: 'flex', justifyContent:'center', alignContent: 'center' }}><Picture /></div>}
+            <div style={{ textAlign: 'center', height: '25%', display: 'flex', alignItems: 'center'}}>
               <p className="overflow card-text">{file.fileName.substring(0,20)}...</p>
             </div>
           </div>
