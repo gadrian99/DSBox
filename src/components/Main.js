@@ -7,6 +7,12 @@ import { useTrail } from 'react-spring';
 
 import { Film, Image, Music, List, Grid, Download, Eye, ExternalLink } from 'react-feather';
 import { ReactComponent as Picture } from '../formats/png-file-extension-interface-symbol.svg'
+import { ReactComponent as GridFilm } from '../formats/mp4-file-format-symbol.svg'
+import { ReactComponent as GridMusic } from '../formats/mp3-file-format-variant.svg'
+import { ReactComponent as GridDocument } from '../formats/7z-file-format-variant.svg'
+
+
+
 
 const Main = (props) => {
   const [view, setView] = useState('list')
@@ -92,6 +98,19 @@ const Main = (props) => {
   }
 
   function renderGrid() {
+
+    function renderImage(fileType) {
+      switch(fileType) {
+        case 'video':
+          return <GridFilm />
+          break
+        case 'audio':
+          return <GridMusic />
+          break
+        default:
+          return <GridDocument />
+      }
+    }
     return(
       <div className="grid-container">
         {files.map((file, key) => {
@@ -99,7 +118,7 @@ const Main = (props) => {
           <div className="card-container" key={key}>
             { file.fileType.split('/', 1)[0] === "image"
               ? <img alt="preview" style={{ height: '200px', width: '200px', borderRadius: '1rem'}} src={"https://ipfs.infura.io/ipfs/" + file.fileHash} />
-              : <div style={{ height: '200px', width: '200px', display: 'flex', justifyContent:'center', alignContent: 'center' }}><Picture /></div>}
+              : <div style={{ height: '200px', width: '200px', display: 'flex', justifyContent:'center', alignContent: 'center' }}>{renderImage(file.fileType.split('/', 1)[0])}</div>}
             <div style={{ textAlign: 'center', height: '25%', display: 'flex', alignItems: 'center'}}>
               <p className="overflow card-text">{file.fileName.substring(0,20)}...</p>
             </div>
@@ -129,13 +148,13 @@ const Main = (props) => {
       </>
     )
   }
-    return(
-        <>
-          <Header account={props.account} files={props.files} captureFile={props.captureFile} uploadFile={props.uploadFile}/>
-          {files.length < 1 ? <ContentAlert /> : renderView()}
 
+  return(
+      <>
+        <Header account={props.account} files={props.files} captureFile={props.captureFile} uploadFile={props.uploadFile}/>
+        {files.length < 1 ? <ContentAlert /> : renderView()}
         </>
-    )
+  )
      // import files from blockchain to this component
 }
 
