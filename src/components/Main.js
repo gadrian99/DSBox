@@ -29,6 +29,10 @@ const Main = (props) => {
         setFiles(props.files.filter(file => file.fileType.substring(0,5) === "audio"))
         setFilter("audio")
         break
+      case '':
+        setFiles(props.files)
+        setFilter("")
+        break
       default:
         setFiles(props.files)
     }
@@ -111,14 +115,14 @@ const Main = (props) => {
       <>
         <div className="button-wrapper">
           <div className="button-wrapper-left">
-            <button className={view === 'list' && 'active'} onClick={() => setView('list')}><List size={30}/></button>
-            <button className={view === 'grid' && 'active'} onClick={() => setView('grid')}><Grid size={30}/></button>
+            <button className={view === 'list' && 'active'} onClick={() => setView('list')}><List size={30} strokeWidth={1}/></button>
+            <button className={view === 'grid' && 'active'} onClick={() => setView('grid')}><Grid size={30} strokeWidth={1}/></button>
           </div>
           <div className="button-wrapper-right">
-            <button type="button" className={filter === '' && 'active'} onClick={() =>filterFiles()}><List size={30}/></button>
-            <button type="button" className={filter === 'video' && 'active'} onClick={() => filterFiles('video')}><Film size={30}/></button>
-            <button type="button" className={filter === 'image' && 'active'} onClick={() => filterFiles('image')}><Image size={30}/></button>
-            <button type="submit" className={filter === 'audio' && 'active'} onClick={() => filterFiles('audio')}><Music size={30}/></button>
+            <button type="button" className={filter === '' && 'active'} onClick={() =>filterFiles('')}><List size={30} strokeWidth={1}/></button>
+            <button type="button" className={filter === 'video' && 'active'} onClick={() => filterFiles('video')}><Film size={30} strokeWidth={1}/></button>
+            <button type="button" className={filter === 'image' && 'active'} onClick={() => filterFiles('image')}><Image size={30} strokeWidth={1}/></button>
+            <button type="submit" className={filter === 'audio' && 'active'} onClick={() => filterFiles('audio')}><Music size={30} strokeWidth={1}/></button>
           </div>
         </div>
         {view === 'list' ? renderTable() : renderGrid()}

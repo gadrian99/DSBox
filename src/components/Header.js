@@ -19,7 +19,7 @@ function Header(props) {
                     {props.account ? props.account.substring(0,10) : '0x0'}...{props.account ? props.account.substring(35,42) : '0x0'}
                 </a> */}
                 <Upload captureFile={props.captureFile} uploadFile={props.uploadFile} />
-                <Bell size={30} style={{ marginRight: '1rem'}}/>
+                <Bell size={30} style={{ marginRight: '1rem'}} strokeWidth={1}/>
                 {/* {props.account
                 ? <img
                     alt=""
