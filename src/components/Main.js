@@ -102,15 +102,16 @@ const Main = (props) => {
     function renderImage(fileType) {
       switch(fileType) {
         case 'video':
-          return <GridFilm />
+          return <GridFilm style={{alignSelf: 'center'}}/>
           break
         case 'audio':
-          return <GridMusic />
+          return <GridMusic style={{alignSelf: 'center'}}/>
           break
         default:
-          return <GridDocument />
+          return <GridDocument style={{alignSelf: 'center'}} />
       }
     }
+
     return(
       <div className="grid-container">
         {files.map((file, key) => {
@@ -118,7 +119,10 @@ const Main = (props) => {
           <div className="card-container" key={key}>
             { file.fileType.split('/', 1)[0] === "image"
               ? <img alt="preview" style={{ height: '200px', width: '200px', borderRadius: '1rem'}} src={"https://ipfs.infura.io/ipfs/" + file.fileHash} />
-              : <div style={{ height: '200px', width: '200px', display: 'flex', justifyContent:'center', alignContent: 'center' }}>{renderImage(file.fileType.split('/', 1)[0])}</div>}
+              : <div style={{ height: '200px', width: '200px', display: 'flex', justifyContent:'center', alignContent: 'center' }}>
+                  {renderImage(file.fileType.split('/', 1)[0])}
+                </div>
+            }
             <div style={{ textAlign: 'center', height: '25%', display: 'flex', alignItems: 'center'}}>
               <p className="overflow card-text">{file.fileName.substring(0,20)}...</p>
             </div>

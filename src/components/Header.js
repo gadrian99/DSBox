@@ -8,7 +8,7 @@ import { Bell } from 'react-feather'
 function Header(props) {
     return(
         <div className="header">
-            <SearchBar />
+            <SearchBar files={props.files} />
             <div className="header-tools">
                 {/* <a target="_blank"
                   alt=""

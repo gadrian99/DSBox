@@ -605,6 +605,7 @@ p {
 
 .active {
   color: var(--on-primary) !important;
+  stroke-width: 5;
 }
 
 .unactive {
