@@ -21,7 +21,6 @@ const customStyles = {
     backgroundColor: '#27262ce9'
   }
 }
-// Modal.setAppElement('#root');
 
 function Profile(props) {
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -87,14 +86,14 @@ function Profile(props) {
                         <div className="file-container-left">
                             <div className="file-list" style={{ marginBottom: '.5rem'}}>
                                 <File size={50} strokeWidth={1}/>
-                                <div style={{display: 'block', marginLeft: '.5rem' }}>
+                                <div style={{display: 'block', marginLeft: '1rem' }}>
                                     <p>Documents</p>
                                     <p>{props.files.length}</p>
                                 </div>
                             </div>
                             <div className="file-list">
                                 <Music size={50} strokeWidth={1}/>
-                                <div style={{display: 'block', marginLeft: '.5rem' }}>
+                                <div style={{display: 'block', marginLeft: '1rem' }}>
                                     <p>Audios</p>
                                     <p>{props.files.length}</p>
                                 </div>
@@ -103,14 +102,14 @@ function Profile(props) {
                         <div className="file-container-right">
                             <div className="file-list" style={{ marginBottom: '.5rem'}}>
                                 <Image size={50} strokeWidth={1}/>
-                                <div style={{display: 'block', marginLeft: '.5rem' }}>
+                                <div style={{display: 'block', marginLeft: '1rem' }}>
                                     <p>Images</p>
                                     <p>{props.files.length}</p>
                                 </div>
                             </div>
                             <div className="file-list">
                                 <Film size={50} strokeWidth={1}/>
-                                <div style={{display: 'block', marginLeft: '.5rem' }}>
+                                <div style={{display: 'block', marginLeft: '1rem' }}>
                                     <p>Videos</p>
                                     <p>{props.files.length}</p>
                                 </div>

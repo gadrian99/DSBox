@@ -162,7 +162,7 @@ class App extends Component {
             <Route
               exact path='/'
               render={(props) => (
-                <Main {...props} account={this.state.account} files={this.state.files} captureFile={this.captureFile} uploadFile={this.uploadFile} />
+                <Main {...props} account={this.state.account} files={this.state.files} captureFile={this.captureFile} uploadFile={this.uploadFile} fileName={this.state.name} />
               )}
             />
             <Route component={NotFound} />

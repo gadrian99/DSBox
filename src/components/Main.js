@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import Header from './Header'
 import { convertBytes } from './helpers';
 import moment from 'moment'
 import ContentAlert from './ContentAlert';
 import { useTrail } from 'react-spring';
+import Modal from 'react-modal'
+import Upload from './Upload';
+import Profile from './Profile';
+import { Bell } from 'react-feather'
+import { Search } from 'react-feather'
+
 
 import { Film, Image, Music, List, Grid, Download, Eye, ExternalLink } from 'react-feather';
 import { ReactComponent as Picture } from '../formats/png-file-extension-interface-symbol.svg'
@@ -11,15 +16,13 @@ import { ReactComponent as GridFilm } from '../formats/mp4-file-format-symbol.sv
 import { ReactComponent as GridMusic } from '../formats/mp3-file-format-variant.svg'
 import { ReactComponent as GridDocument } from '../formats/7z-file-format-variant.svg'
 
-
-
+Modal.setAppElement('#root');
 
 const Main = (props) => {
   const [view, setView] = useState('list')
   const [filter, setFilter] = useState('')
   const [files, setFiles] = useState(props.files)
-
-  // create function that renders specialicons instead of ugly images
+  const [searchField, setSearchField] = useState("");
 
   function filterFiles(e) {
     switch(e) {
@@ -44,6 +47,25 @@ const Main = (props) => {
     }
   }
 
+  const filteredFiles = files.filter(
+    file => {
+    return (
+        file
+        .fileName
+        .toLowerCase()
+        .includes(searchField.toLowerCase()) ||
+        file
+        .fileDescription
+        .toLowerCase()
+        .includes(searchField.toLowerCase())
+    );
+    }
+  );
+
+  function handleChange(e) {
+    setSearchField(e.target.value)
+  }
+
   function renderTable() {
     return(
       <div className="table-container">
@@ -59,7 +81,7 @@ const Main = (props) => {
             <th scope="col" style={{ width: '120px', borderTopRightRadius: '.5rem'}}>Actions</th>
           </tr>
         </thead>
-        { files.map((file, key) => {
+        { filteredFiles.map((file, key) => {
           return(
             <thead className="text-white" style={{ fontSize: '15px', width: '100%', cursor: 'pointer', height: '75px'  }} key={key}>
               <tr className="table-row">
@@ -114,7 +136,7 @@ const Main = (props) => {
 
     return(
       <div className="grid-container">
-        {files.map((file, key) => {
+        { filteredFiles.map((file, key) => {
         return(
           <div className="card-container" key={key}>
             { file.fileType.split('/', 1)[0] === "image"
@@ -155,8 +177,38 @@ const Main = (props) => {
 
   return(
       <>
-        <Header account={props.account} files={props.files} captureFile={props.captureFile} uploadFile={props.uploadFile}/>
-        {files.length < 1 ? <ContentAlert /> : renderView()}
+        {/* <Header searchFiles={searchFiles} account={props.account} files={props.files} captureFile={props.captureFile} uploadFile={props.uploadFile}/> */}
+        <div className="header">
+          <img alt="logo" src="/assets/Logo.svg" className="logo"></img>
+            <div style={{ width: '100%' }} className="search-bar">
+              <Search className="search-icon" />
+              <input className="search-input" placeholder="Search..." onChange={handleChange}/>
+            </div>
+            <div className="header-tools">
+                {/* <a target="_blank"
+                  alt=""
+                  style={{ fontFamily: 'Oleo Script'}}
+                  className="header-address"
+                  rel="noopener noreferrer"
+                  href={"https://etherscan.io/address/" + props.account}>
+                    {props.account ? props.account.substring(0,10) : '0x0'}...{props.account ? props.account.substring(35,42) : '0x0'}
+                </a> */}
+                <Upload account={props.account} captureFile={props.captureFile} uploadFile={props.uploadFile} fileName={props.fileName} />
+                <Bell size={30} style={{ marginRight: '1rem'}} strokeWidth={1}/>
+                {/* {props.account
+                ? <img
+                    alt=""
+                    className="header-image"
+                    width="30"
+                    height="30"
+                    src={`data:image/png;base64,${new Identicon(props.account, 30).toString()}`}
+                  />
+                : <span></span>
+                } */}
+                <Profile account={props.account} files={props.files} />
+            </div>
+        </div>
+        {filteredFiles.length < 1 ? <ContentAlert message={"Please check your account"}/> : renderView()}
         </>
   )
      // import files from blockchain to this component

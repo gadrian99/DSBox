@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Activity } from 'react-feather'
 
-function ContentAlert() {
+function ContentAlert({ message }) {
     return (
         <div className="content-alert">
-            <h3 className="content-alert-text">No content yet...</h3>
-            <p>Upload your first file by clicking the big button below</p>
+            <Activity size={120} />
+            <h3 className="content-alert-text mt-5">No content found</h3>
+            <small>{message}</small>
         </div>
     )
 }
