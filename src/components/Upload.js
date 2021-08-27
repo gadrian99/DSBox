@@ -78,12 +78,14 @@ function Upload(props) {
                       required />
                     <small>Description <p>(130 max characters)</p></small>
                     <textarea
+                      id="fileDescription"
+                      ref={(input) => { fileDescription = input }}
                       style={{ maxHeight: '175px', minHeight: '45px'}}
                       type="text"
                       maxLength="130"
                       className="form-control"
                       placeholder="Description"
-                    required />
+                      required />
                   </div>
 
                   <div  className="preview" style={{ width: '350px'}}>
