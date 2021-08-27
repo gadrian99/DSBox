@@ -674,3 +674,19 @@ p {
 .file-list:hover {
   background-color: var(--on-primary);
 }
+
+.table-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 70vh;
+  width: 60vw;
+}
+
+input[type="text"]:disabled {
+  background: none;
+  border: 1px solid var(primary);
+  border-radius: 0.5rem;
+  color: white !important;
+}

@@ -27,8 +27,6 @@ const customStyles = {
 function Upload(props) {
   let fileDescription;
   const [modalIsOpen, setIsOpen] = React.useState(false);
-  const [customName, setCustomName] = React.useState('')
-  const [custom, setCustom] = React.useState(false)
 
   function openModal() {
     setIsOpen(true);
@@ -41,11 +39,6 @@ function Upload(props) {
 
   function closeModal() {
     setIsOpen(false);
-  }
-
-  function handleChange(e) {
-    setCustomName(e.target.value)
-    console.log(customName)
   }
 
   return (
@@ -75,22 +68,14 @@ function Upload(props) {
                       placeholder={props.account}
                       disabled
                       required/>
-                    <small>Name <input onClick={() => setCustom(!custom)} style={{ marginLeft: '.5rem' }} type="checkbox"></input></small>
-                    {custom
-                      ? <input
-                        type="text"
-                        maxLength="30"
-                        placeholder={props.fileName ? props.fileName : 'No file chosen'}
-                        // value={customName}
-                        className="form-control mb-3"
-                        required />
-                      : <input
+                    <small>Name</small>
+                    <input
                       type="text"
                       maxLength="30"
-                      placeholder={props.fileName}
+                      placeholder={props.fileName ? props.fileName : 'No file chosen'}
                       disabled
                       className="form-control mb-3"
-                      required />}
+                      required />
                     <small>Description <p>(130 max characters)</p></small>
                     <textarea
                       style={{ maxHeight: '175px', minHeight: '45px'}}

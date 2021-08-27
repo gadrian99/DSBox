@@ -22,7 +22,28 @@ const Main = (props) => {
   const [view, setView] = useState('list')
   const [filter, setFilter] = useState('')
   const [files, setFiles] = useState(props.files)
-  const [searchField, setSearchField] = useState("");
+  const [searchField, setSearchField] = useState("")
+  const [modalIsOpen, setIsOpen] = useState(false)
+  const [currentFile, setCurrentFile] = useState({})
+
+
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      background: '#1a1a1a',
+      border: 'none',
+      borderRadius: '40px',
+      padding: '50px 100px'
+    },
+    overlay: {
+      backgroundColor: '#27262cc2'
+    }
+  }
 
   function filterFiles(e) {
     switch(e) {
@@ -66,9 +87,44 @@ const Main = (props) => {
     setSearchField(e.target.value)
   }
 
+  function openModal(file) {
+    setCurrentFile(file)
+    setIsOpen(true)
+  }
+
+  function afterOpenModal() {
+
+
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+    setCurrentFile({})
+  }
+
+  function renderError() {
+    return(
+      <div>
+        <Picture />
+      </div>
+    )
+  }
+
   function renderTable() {
     return(
       <div className="table-container">
+        <Modal
+          isOpen={modalIsOpen}
+          onAfterOpen={afterOpenModal}
+          onRequestClose={closeModal}
+          style={customStyles}
+          contentLabel="Single File View"
+        >
+          <div className="table-modal">
+            <h4>{currentFile.fileName}</h4>
+            <img style={{ height: '20vh', width: 'auto'}} src={"https://ipfs.infura.io/ipfs/" + currentFile.fileHash} />
+          </div>
+        </Modal>
         <table className="table-sm text-center" style={{ width: '85vw', marginTop: '2rem' }}>
         <thead style={{ 'fontSize': '18px' }}>
           <tr className="bg-dark text-white">
@@ -83,7 +139,7 @@ const Main = (props) => {
         </thead>
         { filteredFiles.map((file, key) => {
           return(
-            <thead className="text-white" style={{ fontSize: '15px', width: '100%', cursor: 'pointer', height: '75px'  }} key={key}>
+            <thead className="text-white" style={{ fontSize: '15px', width: '100%', cursor: 'pointer', height: '75px' }} key={key}>
               <tr className="table-row">
                 <td className="overflow" style={{ maxWidth: '200px'}}>{file.fileName}</td>
                 {/* <td className="overflow" style={{ maxWidth: '230px'}}>{file.fileDescription}</td> */}
@@ -107,7 +163,7 @@ const Main = (props) => {
                     <img alt="preview" style={{ height: '50px' }}src={"https://ipfs.infura.io/ipfs/" + file.fileHash} />
                   </a> */}
                   <Download />
-                  <Eye style={{ margin: '0 1rem' }}/>
+                  <Eye onClick={() => openModal(file)} style={{ margin: '0 1rem' }}/>
                   <ExternalLink />
                 </td>
               </tr>
@@ -194,7 +250,7 @@ const Main = (props) => {
                     {props.account ? props.account.substring(0,10) : '0x0'}...{props.account ? props.account.substring(35,42) : '0x0'}
                 </a> */}
                 <Upload account={props.account} captureFile={props.captureFile} uploadFile={props.uploadFile} fileName={props.fileName} />
-                <Bell size={30} style={{ marginRight: '1rem'}} strokeWidth={1}/>
+                {/* <Bell size={30} style={{ marginRight: '1rem'}} strokeWidth={1}/> */}
                 {/* {props.account
                 ? <img
                     alt=""
@@ -208,6 +264,7 @@ const Main = (props) => {
                 <Profile account={props.account} files={props.files} />
             </div>
         </div>
+        {console.log(currentFile)}
         {filteredFiles.length < 1 ? <ContentAlert message={"Please check your account"}/> : renderView()}
         </>
   )
