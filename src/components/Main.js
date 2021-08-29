@@ -120,10 +120,33 @@ const Main = (props) => {
           style={customStyles}
           contentLabel="Single File View"
         >
+         {modalIsOpen && console.log(currentFile)}
           <div className="table-modal">
-            <h4>{currentFile.fileName}</h4>
-            {modalIsOpen && console.log("https://ipfs.infura.io/ipfs/" + currentFile.fileHash)}
-            {modalIsOpen && currentFile.fileType.split('/', 1) == "image" ? <img style={{ maxHeight: '20rem', width: 'auto'}} src={"https://ipfs.infura.io/ipfs/" + currentFile.fileHash} /> : <Picture />}
+            <div className="table-modal-left">
+              <div className="table-image-wrapper">
+                {modalIsOpen && currentFile.fileType.split('/', 1) == "image"
+                  ? <img style={{ maxHeight: '25rem', maxWidth: '20rem'}} src={"https://ipfs.infura.io/ipfs/" + currentFile.fileHash} />
+                  : <Picture />}
+              </div>
+            </div>
+            <div className="table-modal-right">
+              <small>Name</small>
+              <p className="mb-3">{currentFile.fileName}</p>
+
+              <small>Description</small>
+              <p className="mb-3">{currentFile.fileDescription}</p>
+
+              <small>Size</small>
+              <p className="mb-3">{convertBytes(currentFile.fileSize)}</p>
+
+              <small>Date</small>
+              <p className="mb-3">{moment.unix(currentFile.uploadTime).format('h:mm:ss A M/D/Y')}</p>
+
+              <div>
+                <button className="download-button">Download</button>
+                <button className="share-button">Share</button>
+              </div>
+            </div>
           </div>
         </Modal>
         <table className="table-sm text-center" style={{ width: '85vw', marginTop: '2rem' }}>
@@ -215,18 +238,7 @@ const Main = (props) => {
   function renderView() {
     return(
       <>
-        <div className="button-wrapper">
-          <div className="button-wrapper-left">
-            <button className={view === 'list' && 'active'} onClick={() => setView('list')}><List size={30} strokeWidth={1}/></button>
-            <button className={view === 'grid' && 'active'} onClick={() => setView('grid')}><Grid size={30} strokeWidth={1}/></button>
-          </div>
-          <div className="button-wrapper-right">
-            <button type="button" className={filter === '' && 'active'} onClick={() =>filterFiles('')}><List size={30} strokeWidth={1}/></button>
-            <button type="button" className={filter === 'video' && 'active'} onClick={() => filterFiles('video')}><Film size={30} strokeWidth={1}/></button>
-            <button type="button" className={filter === 'image' && 'active'} onClick={() => filterFiles('image')}><Image size={30} strokeWidth={1}/></button>
-            <button type="submit" className={filter === 'audio' && 'active'} onClick={() => filterFiles('audio')}><Music size={30} strokeWidth={1}/></button>
-          </div>
-        </div>
+
         {view === 'list' ? renderTable() : renderGrid()}
       </>
     )
@@ -264,6 +276,18 @@ const Main = (props) => {
                 } */}
                 <Profile account={props.account} files={props.files} />
             </div>
+        </div>
+        <div className="button-wrapper">
+          <div className="button-wrapper-left">
+            <button className={view === 'list' && 'active'} onClick={() => setView('list')}><List size={30} strokeWidth={1}/></button>
+            <button className={view === 'grid' && 'active'} onClick={() => setView('grid')}><Grid size={30} strokeWidth={1}/></button>
+          </div>
+          <div className="button-wrapper-right">
+            <button type="button" className={filter === '' && 'active'} onClick={() =>filterFiles('')}><List size={30} strokeWidth={1}/></button>
+            <button type="button" className={filter === 'video' && 'active'} onClick={() => filterFiles('video')}><Film size={30} strokeWidth={1}/></button>
+            <button type="button" className={filter === 'image' && 'active'} onClick={() => filterFiles('image')}><Image size={30} strokeWidth={1}/></button>
+            <button type="submit" className={filter === 'audio' && 'active'} onClick={() => filterFiles('audio')}><Music size={30} strokeWidth={1}/></button>
+          </div>
         </div>
         {console.log(currentFile)}
         {filteredFiles.length < 1 ? <ContentAlert message={"Please check your account"}/> : renderView()}
