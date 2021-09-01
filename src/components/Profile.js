@@ -88,14 +88,14 @@ function Profile(props) {
                                 <File size={50} strokeWidth={1}/>
                                 <div style={{display: 'block', marginLeft: '1rem' }}>
                                     <p>Documents</p>
-                                    <p>{props.files.length}</p>
+                                    <p>{props.files.filter(file => file.fileType.substring(0,11) === "application").length}</p>
                                 </div>
                             </div>
                             <div className="file-list">
                                 <Music size={50} strokeWidth={1}/>
                                 <div style={{display: 'block', marginLeft: '1rem' }}>
                                     <p>Audios</p>
-                                    <p>{props.files.length}</p>
+                                    <p>{props.files.filter(file => file.fileType.substring(0,5) === "audio").length}</p>
                                 </div>
                             </div>
                         </div>
@@ -104,14 +104,14 @@ function Profile(props) {
                                 <Image size={50} strokeWidth={1}/>
                                 <div style={{display: 'block', marginLeft: '1rem' }}>
                                     <p>Images</p>
-                                    <p>{props.files.length}</p>
+                                    <p>{props.files.filter(file => file.fileType.substring(0,5) === "image").length}</p>
                                 </div>
                             </div>
                             <div className="file-list">
                                 <Film size={50} strokeWidth={1}/>
                                 <div style={{display: 'block', marginLeft: '1rem' }}>
                                     <p>Videos</p>
-                                    <p>{props.files.length}</p>
+                                    <p>{props.files.filter(file => file.fileType.substring(0,5) === "video").length}</p>
                                 </div>
                             </div>
                         </div>
@@ -122,7 +122,7 @@ function Profile(props) {
                         <p>Used Space: {countFiles()}</p>
                     </div>
                     <img src="/assets/Colored-black.svg" style={{ height: '2rem', margin: '.5rem 0' }}/>
-                    <small>App version 1.2</small>
+                    <small>App version 2.0</small>
                 </div>
             </Modal>
         </div>

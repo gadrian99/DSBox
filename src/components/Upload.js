@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
 // import { convertBytes } from './helpers';
 // import moment from 'moment'
-import { Upload as UploadIcon, Plus } from 'react-feather'
+import { Upload as UploadIcon } from 'react-feather'
 
 import Modal from 'react-modal'
 
@@ -43,7 +43,7 @@ function Upload(props) {
 
   return (
     <div>
-      <button className="add-button" onClick={openModal}><Plus size={40} /></button>
+      <button className="add-button" onClick={openModal}><UploadIcon size={30} /></button>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
@@ -80,20 +80,19 @@ function Upload(props) {
                     <textarea
                       id="fileDescription"
                       ref={(input) => { fileDescription = input }}
-                      style={{ maxHeight: '175px', minHeight: '45px'}}
+                      style={{ height: '145px', maxHeight: '145px' }}
                       type="text"
                       maxLength="130"
                       className="form-control"
                       placeholder="Description"
                       required />
                   </div>
-
                   <div  className="preview" style={{ width: '350px'}}>
                     <input type="file" onChange={props.captureFile} className="text-white preview-button"/>
                   </div>
                 </div>
             </div>
-            <button type="submit" className="form-button"><UploadIcon style={{ marginRight: '1rem', lineHeight: '2px' }} />Upload</button>
+            <button type="submit" className="form-button">Upload</button>
         </form>
       </div>
       </Modal>

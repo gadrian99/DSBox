@@ -11,10 +11,11 @@ import { Search } from 'react-feather'
 
 
 import { Film, Image, Music, List, Grid, Download, Eye, ExternalLink } from 'react-feather';
-import { ReactComponent as Picture } from '../formats/png-file-extension-interface-symbol.svg'
-import { ReactComponent as GridFilm } from '../formats/mp4-file-format-symbol.svg'
-import { ReactComponent as GridMusic } from '../formats/mp3-file-format-variant.svg'
-import { ReactComponent as GridDocument } from '../formats/7z-file-format-variant.svg'
+import { ReactComponent as FileImg } from '../assets/img.svg'
+import { ReactComponent as FileApp } from '../assets/app.svg'
+import { ReactComponent as FileVid } from '../assets/vid.svg'
+import { ReactComponent as FileAud } from '../assets/aud.svg'
+import { ReactComponent as FileDoc } from '../assets/doc.svg'
 
 Modal.setAppElement('#root');
 
@@ -38,7 +39,6 @@ const Main = (props) => {
       background: '#1a1a1a',
       border: 'none',
       borderRadius: '40px',
-      padding: '50px 100px'
     },
     overlay: {
       backgroundColor: '#27262cc2'
@@ -65,6 +65,24 @@ const Main = (props) => {
         break
       default:
         setFiles(props.files)
+    }
+  }
+
+  function renderImage(fileType) {
+    switch(fileType) {
+      case 'video':
+        return <FileVid style={{alignSelf: 'center'}}/>
+        break
+      case 'audio':
+        return <FileAud style={{alignSelf: 'center'}}/>
+        break
+      case 'application':
+        return <FileApp style ={{alignSelf: 'center'}} />
+        break
+      case 'document':
+        return <FileDoc style={{alignSelf: 'center'}} />
+      default:
+        return <FileImg style={{alignSelf: 'center'}} />
     }
   }
 
@@ -105,7 +123,7 @@ const Main = (props) => {
   function renderError() {
     return(
       <div>
-        <Picture />
+        <h1>Error</h1>
       </div>
     )
   }
@@ -122,31 +140,41 @@ const Main = (props) => {
         >
          {modalIsOpen && console.log(currentFile)}
           <div className="table-modal">
-            <div className="table-modal-left">
-              <div className="table-image-wrapper">
-                {modalIsOpen && currentFile.fileType.split('/', 1) == "image"
-                  ? <img style={{ maxHeight: '25rem', maxWidth: '20rem'}} src={"https://ipfs.infura.io/ipfs/" + currentFile.fileHash} />
-                  : <Picture />}
+              <div style={{ display: 'flex', justifyContent: 'center', width: '100%'}}>
+              { modalIsOpen && currentFile.fileType.split('/', 1) == "image" ? <img style={{ height: '15rem', maxWidth: '15rem', alignSelf: 'center'}} src={"https://ipfs.infura.io/ipfs/" + currentFile.fileHash} /> : null }
               </div>
-            </div>
-            <div className="table-modal-right">
+
               <small>Name</small>
-              <p className="mb-3">{currentFile.fileName}</p>
+              <p className="mb-3" style={{ wordWrap: 'normal'}}>{currentFile.fileName}</p>
 
               <small>Description</small>
               <p className="mb-3">{currentFile.fileDescription}</p>
 
-              <small>Size</small>
-              <p className="mb-3">{convertBytes(currentFile.fileSize)}</p>
+             <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+               <div>
+                <small>Size</small>
+                <p className="mb-3">{convertBytes(currentFile.fileSize)}</p>
+               </div>
+               <div>
+                <small>File Id</small>
+                <p className="mb-3">{currentFile.fileId}</p>
+               </div>
+               <div>
+                <small>Date</small>
+                <p className="mb-3">{moment.unix(currentFile.uploadTime).format('h:mm:ss A M/D/Y')}</p>
+               </div>
+             </div>
 
-              <small>Date</small>
-              <p className="mb-3">{moment.unix(currentFile.uploadTime).format('h:mm:ss A M/D/Y')}</p>
+              <small>Uploaded by</small>
+              <p className="mb-3">{currentFile.uploader}</p>
 
-              <div>
-                <button className="download-button">Download</button>
+              <small>File Hash</small>
+              <p className="mb-3">{currentFile.fileHash}</p>
+
+              <div style={{ display: 'flex', justifyContent: 'space-evenly', width: '100%' }}>
+                <button download className="download-button" href={"https://ipfs.infura.io/ipfs/" + currentFile.fileHash} target="_blank" >Download</button>
                 <button className="share-button">Share</button>
               </div>
-            </div>
           </div>
         </Modal>
         <table className="table-sm text-center" style={{ width: '85vw', marginTop: '2rem' }}>
@@ -156,7 +184,7 @@ const Main = (props) => {
             <th scope="col" style={{ width: '230px'}}>Description</th>
             <th scope="col" style={{ width: '120px'}}>Type</th>
             <th scope="col" style={{ width: '90px'}}>Size</th>
-            <th scope="col" style={{ width: '90px'}}>Date</th>
+            <th scope="col" style={{ width: '90px', borderTopRightRadius: '.5rem'}}>Date</th>
             {/* <th scope="col" style={{ width: '120px'}}>Uploader/View</th> */}
             {/* <th scope="col" style={{ width: '120px', borderTopRightRadius: '.5rem'}}>Actions</th> */}
           </tr>
@@ -201,24 +229,58 @@ const Main = (props) => {
 
   function renderGrid() {
 
-    function renderImage(fileType) {
-      switch(fileType) {
-        case 'video':
-          return <GridFilm style={{alignSelf: 'center'}}/>
-          break
-        case 'audio':
-          return <GridMusic style={{alignSelf: 'center'}}/>
-          break
-        default:
-          return <GridDocument style={{alignSelf: 'center'}} />
-      }
-    }
-
     return(
+      <>
+        <Modal
+            isOpen={modalIsOpen}
+            onAfterOpen={afterOpenModal}
+            onRequestClose={closeModal}
+            style={customStyles}
+            contentLabel="Single File View"
+          >
+          {modalIsOpen && console.log(currentFile)}
+            <div className="table-modal">
+              <div style={{ display: 'flex', justifyContent: 'center', width: '100%'}}>
+              { modalIsOpen && currentFile.fileType.split('/', 1) == "image" ? <img style={{ height: '15rem', maxWidth: '15rem', alignSelf: 'center'}} src={"https://ipfs.infura.io/ipfs/" + currentFile.fileHash} /> : null }
+              </div>
+
+              <small>Name</small>
+              <p className="mb-3" style={{ wordWrap: 'normal'}}>{currentFile.fileName}</p>
+
+              <small>Description</small>
+              <p className="mb-3">{currentFile.fileDescription}</p>
+
+              <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+                <div>
+                <small>Size</small>
+                <p className="mb-3">{convertBytes(currentFile.fileSize)}</p>
+                </div>
+                <div>
+                <small>File Id</small>
+                <p className="mb-3">{currentFile.fileId}</p>
+                </div>
+                <div>
+                <small>Date</small>
+                <p className="mb-3">{moment.unix(currentFile.uploadTime).format('h:mm:ss A M/D/Y')}</p>
+                </div>
+              </div>
+
+              <small>Uploaded by</small>
+              <p className="mb-3">{currentFile.uploader}</p>
+
+              <small>File Hash</small>
+              <p className="mb-3">{currentFile.fileHash}</p>
+
+              <div style={{ display: 'flex', justifyContent: 'space-evenly', width: '100%' }}>
+                <button download className="download-button" href={"https://ipfs.infura.io/ipfs/" + currentFile.fileHash} target="_blank" >Download</button>
+                <button className="share-button">Share</button>
+              </div>
+          </div>
+        </Modal>
       <div className="grid-container">
         { filteredFiles.map((file, key) => {
         return(
-          <div className="card-container" key={key}>
+          <div className="card-container" onClick={() => openModal(file)} key={key}>
             { file.fileType.split('/', 1)[0] === "image"
               ? <img alt="preview" style={{ height: '200px', width: '200px', borderRadius: '1rem'}} src={"https://ipfs.infura.io/ipfs/" + file.fileHash} />
               : <div style={{ height: '200px', width: '200px', display: 'flex', justifyContent:'center', alignContent: 'center' }}>
@@ -232,13 +294,13 @@ const Main = (props) => {
         )
         })}
       </div>
+      </>
     )
   }
 
   function renderView() {
     return(
       <>
-
         {view === 'list' ? renderTable() : renderGrid()}
       </>
     )
@@ -284,7 +346,7 @@ const Main = (props) => {
           </div>
           <div className="button-wrapper-right">
             <button type="button" className={filter === '' && 'active'} onClick={() =>filterFiles('')}><List size={30} strokeWidth={1}/></button>
-            <button type="button" className={filter === 'video' && 'active'} onClick={() => filterFiles('video')}><Film size={30} strokeWidth={1}/></button>
+            <button type="button" className={"mt-5" + filter === 'video' && 'active'} onClick={() => filterFiles('video')}><Film size={30} strokeWidth={1}/></button>
             <button type="button" className={filter === 'image' && 'active'} onClick={() => filterFiles('image')}><Image size={30} strokeWidth={1}/></button>
             <button type="submit" className={filter === 'audio' && 'active'} onClick={() => filterFiles('audio')}><Music size={30} strokeWidth={1}/></button>
           </div>

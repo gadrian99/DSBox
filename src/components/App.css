@@ -138,16 +138,17 @@ p {
 }
 
 .form-button {
-  width: 20rem;
-  height: 3rem;
-  border: none;
-  border-radius: 2rem;
-  background-color: var(--primary);
-  color: white;
-  margin-top: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 1rem;
+  background: none;
+  color: white;
+  padding: 1rem 4rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--on-primary);
+  min-width: 10rem;
+  transition: 0.2s linear;
 }
 
 .form-button:hover {
@@ -510,16 +511,23 @@ p {
 }
 
 .button-wrapper-right {
+  display: flex;
+  background: var(--secondary);
+  color: white;
+  border: none;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 50px;
+  width: 225px;
+  border-radius: 0.5rem;
+  transition: linear 0.2s;
   padding: 0.5rem;
-  border-radius: 2rem;
 }
 
 .button-wrapper-right > button {
   background: none;
   border: none;
   color: white;
-  margin-left: 0.5rem;
-  transition: linear 0.4s;
 }
 
 .button-wrapper-right > button:hover {
@@ -530,12 +538,21 @@ p {
   background: none;
   border: none;
   color: white;
-  margin-left: 0.5rem;
   transition: linear 0.4s;
 }
 
 .button-wrapper-left {
   display: flex;
+  background: var(--secondary);
+  color: white;
+  border: none;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 50px;
+  width: 125px;
+  border-radius: 0.5rem;
+  transition: linear 0.2s;
+  padding: 0.5rem;
 }
 
 .button-wrapper-left > button:hover {
@@ -571,7 +588,7 @@ p {
   word-wrap: none;
   align-items: center;
   color: white;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   height: 300px;
   width: 250px;
   padding-top: 1rem;
@@ -673,10 +690,12 @@ p {
 .table-modal {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 70vh;
-  width: 60vw;
+  flex-direction: column;
+  align-items: flex-start;
+  height: auto;
+  width: 40vw;
   color: white;
+  padding: 1rem;
 }
 
 .table-modal-left {
@@ -685,11 +704,8 @@ p {
 }
 
 .table-modal-right {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: block;
   width: 30rem;
-  height: 35rem;
   padding: 1rem 0;
 }
 

@@ -130,7 +130,6 @@ class App extends Component {
         this.setState({loading: false})
       })
     })
-    this.props.history.push('/')
   }
 
   constructor(props) {
