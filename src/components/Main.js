@@ -141,7 +141,7 @@ const Main = (props) => {
          {modalIsOpen && console.log(currentFile)}
           <div className="table-modal">
               <div style={{ display: 'flex', justifyContent: 'center', width: '100%'}}>
-              { modalIsOpen && currentFile.fileType.split('/', 1) == "image" ? <img style={{ height: '15rem', maxWidth: '15rem', alignSelf: 'center'}} src={"https://ipfs.infura.io/ipfs/" + currentFile.fileHash} /> : null }
+              { modalIsOpen && currentFile.fileType.split('/', 1) == "image" ? <img style={{ height: '15rem', alignSelf: 'center'}} src={"https://ipfs.infura.io/ipfs/" + currentFile.fileHash} /> : null }
               </div>
 
               <small>Name</small>
@@ -195,7 +195,7 @@ const Main = (props) => {
               <tr className="table-row">
                 <td className="overflow" style={{ maxWidth: '200px'}}>{file.fileName}</td>
                 <td className="overflow" style={{ maxWidth: '230px'}}>{file.fileDescription}</td>
-                <td className="overflow" style={{ maxWidth: '120px'}}>{file.fileType}</td>
+                <td className="overflow" style={{ maxWidth: '120px'}}>{file.fileType.split('/', 1)[0]}</td>
                 <td className="overflow" style={{ maxWidth: '90px'}}>{convertBytes(file.fileSize)}</td>
                 <td className="overflow" style={{ maxWidth: '90px'}}>{moment.unix(file.uploadTime).format('h:mm:ss A M/D/Y')}</td>
                 {/* <td className="overflow" style={{ maxWidth: '120px'}}>
@@ -241,7 +241,7 @@ const Main = (props) => {
           {modalIsOpen && console.log(currentFile)}
             <div className="table-modal">
               <div style={{ display: 'flex', justifyContent: 'center', width: '100%'}}>
-              { modalIsOpen && currentFile.fileType.split('/', 1) == "image" ? <img style={{ height: '15rem', maxWidth: '15rem', alignSelf: 'center'}} src={"https://ipfs.infura.io/ipfs/" + currentFile.fileHash} /> : null }
+              { modalIsOpen && currentFile.fileType.split('/', 1) == "image" ? <img style={{ height: '15rem', alignSelf: 'center'}} src={"https://ipfs.infura.io/ipfs/" + currentFile.fileHash} /> : null }
               </div>
 
               <small>Name</small>
@@ -352,7 +352,7 @@ const Main = (props) => {
           </div>
         </div>
         {console.log(currentFile)}
-        {filteredFiles.length < 1 ? <ContentAlert message={"Please check your account"}/> : renderView()}
+        {filteredFiles.length < 1 ? <ContentAlert /> : renderView()}
         </>
   )
      // import files from blockchain to this component

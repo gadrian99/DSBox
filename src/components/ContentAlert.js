@@ -6,7 +6,6 @@ function ContentAlert({ message }) {
         <div className="content-alert">
             <Activity size={120} />
             <h3 className="content-alert-text mt-5">No content found</h3>
-            <small>{message}</small>
         </div>
     )
 }
