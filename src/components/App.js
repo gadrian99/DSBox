@@ -95,7 +95,7 @@ class App extends Component {
         type: file.type,
         name: file.name
       })
-      console.log('buffer', this.state.buffer)
+      console.log('buffer', this.state.name, this.state.type)
     }
     this.setState({ loading: false })
   }

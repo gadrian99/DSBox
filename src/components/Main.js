@@ -141,7 +141,7 @@ const Main = (props) => {
          {modalIsOpen && console.log(currentFile)}
           <div className="table-modal">
               <div style={{ display: 'flex', justifyContent: 'center', width: '100%'}}>
-              { modalIsOpen && currentFile.fileType.split('/', 1) == "image" ? <img style={{ height: '15rem', alignSelf: 'center'}} src={"https://ipfs.infura.io/ipfs/" + currentFile.fileHash} /> : null }
+              { modalIsOpen && currentFile.fileType.split('/', 1) == "image" ? <img style={{ height: '15rem', alignSelf: 'center', marginBottom: '1rem' }} src={"https://ipfs.infura.io/ipfs/" + currentFile.fileHash} /> : null }
               </div>
 
               <small>Name</small>
@@ -228,7 +228,6 @@ const Main = (props) => {
   }
 
   function renderGrid() {
-
     return(
       <>
         <Modal
@@ -241,7 +240,7 @@ const Main = (props) => {
           {modalIsOpen && console.log(currentFile)}
             <div className="table-modal">
               <div style={{ display: 'flex', justifyContent: 'center', width: '100%'}}>
-              { modalIsOpen && currentFile.fileType.split('/', 1) == "image" ? <img style={{ height: '15rem', alignSelf: 'center'}} src={"https://ipfs.infura.io/ipfs/" + currentFile.fileHash} /> : null }
+              { modalIsOpen && currentFile.fileType.split('/', 1) == "image" ? <img style={{ height: '15rem', alignSelf: 'center', marginBottom: '1rem' }} src={"https://ipfs.infura.io/ipfs/" + currentFile.fileHash} /> : null }
               </div>
 
               <small>Name</small>

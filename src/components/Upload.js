@@ -1,7 +1,7 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 // import { convertBytes } from './helpers';
 // import moment from 'moment'
-import { Upload as UploadIcon } from 'react-feather'
+import { CheckCircle, Upload as UploadIcon } from 'react-feather'
 
 import Modal from 'react-modal'
 
@@ -15,8 +15,9 @@ const customStyles = {
     transform: 'translate(-50%, -50%)',
     background: '#1a1a1a',
     border: 'none',
+    height: '70vh',
+    width: '40rem',
     borderRadius: '40px',
-    padding: '50px 100px'
   },
   overlay: {
     backgroundColor: '#27262cc2'
@@ -26,7 +27,9 @@ const customStyles = {
 
 function Upload(props) {
   let fileDescription;
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [currentStep, setCurrentStep] = useState('1')
+  const [currentFile, setCurrentFile] = useState({})
 
   function openModal() {
     setIsOpen(true);
@@ -41,6 +44,91 @@ function Upload(props) {
     setIsOpen(false);
   }
 
+  function firstStep() {
+    return(
+      <>
+        <h3 style={{ color: 'white', paddingBottom: '1rem'}}>Upload File</h3>
+        <div  className="preview" style={{ height: '100%', swidth: '350px'}}>
+          <input type="file" onChange={props.captureFile} className="text-white preview-button"/>
+        </div>
+        <button className="form-button mt-4" onClick={(e) => {
+          e.preventDefault()
+          setCurrentStep('2')
+        }}>Next</button>
+      </>
+    )
+  }
+
+  function secondStep() {
+    return(
+      <div className="container-fluid mt-4 text-center">
+        <div className="form-control-wrapper" >
+          <div style={{ textAlign: 'start', width: '350px', color: 'white'}}>
+            <small>Authorization Hash</small>
+            <input
+              type="text"
+              className="form-control mb-3"
+              placeholder={props.account}
+              disabled
+              required/>
+            <small>Name</small>
+            <input
+              type="text"
+              maxLength="30"
+              disabled
+              className="form-control mb-3"
+              required />
+            <small>Description <p>(130 max characters)</p></small>
+            <textarea
+              id="fileDescription"
+              ref={(input) => { fileDescription = input }}
+              style={{ height: '145px', minHeight: '145px', maxHeight: '145px' }}
+              type="text"
+              maxLength="130"
+              className="form-control"
+              placeholder="Description"
+              required />
+          </div>
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'space-evenly', marginTop: '2rem', width: '100%' }}>
+          <button className="form-button" onClick={(e) => {
+            e.preventDefault()
+            setCurrentStep('1')
+          }}>Previous</button>
+          {/* <button type="submit" className="form-button">Upload</button> */}
+          <button className="form-button" onClick={(e) => {
+          e.preventDefault()
+          setCurrentStep('3')
+          }}>Confirm</button>
+        </div>
+
+      </div>
+    )
+  }
+
+  function thirdStep() {
+    return(
+      <div className="confirmation-screen">
+        <CheckCircle color='#ad6bff' size={150} className="mb-5"/>
+        <h4>File uploaded successfully</h4>
+        <p>You can view your transaction on Etherscan here </p>
+      </div>
+    )
+  }
+
+  function renderView() {
+    switch(currentStep) {
+      case '1':
+        return firstStep()
+        break;
+      case '2':
+        return secondStep()
+        break;
+      case '3':
+        return thirdStep()
+    }
+  }
+
   return (
     <div>
       <button className="add-button" onClick={openModal}><UploadIcon size={30} /></button>
@@ -51,50 +139,13 @@ function Upload(props) {
         style={customStyles}
         contentLabel="Upload"
       >
-        <div className="container-fluid mt-4 text-center">
-        <form className="form-wrapper"onSubmit={(event) => {
+        <form className="form-wrapper" onSubmit={(event) => {
             event.preventDefault()
             const description = fileDescription.value
             props.uploadFile(description)
             }} >
-            <h3 style={{ color: 'white'}}>Upload File</h3>
-            <div className="form-group">
-                <div className="form-control-wrapper" >
-                  <div style={{ textAlign: 'start', width: '350px', color: 'white'}}>
-                    <small>Authorization Hash</small>
-                    <input
-                      type="text"
-                      className="form-control mb-3"
-                      placeholder={props.account}
-                      disabled
-                      required/>
-                    <small>Name</small>
-                    <input
-                      type="text"
-                      maxLength="30"
-                      placeholder={props.fileName ? props.fileName : 'No file chosen'}
-                      disabled
-                      className="form-control mb-3"
-                      required />
-                    <small>Description <p>(130 max characters)</p></small>
-                    <textarea
-                      id="fileDescription"
-                      ref={(input) => { fileDescription = input }}
-                      style={{ height: '145px', maxHeight: '145px' }}
-                      type="text"
-                      maxLength="130"
-                      className="form-control"
-                      placeholder="Description"
-                      required />
-                  </div>
-                  <div  className="preview" style={{ width: '350px'}}>
-                    <input type="file" onChange={props.captureFile} className="text-white preview-button"/>
-                  </div>
-                </div>
-            </div>
-            <button type="submit" className="form-button">Upload</button>
+            {renderView()}
         </form>
-      </div>
       </Modal>
     </div>
   );
