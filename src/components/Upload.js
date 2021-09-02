@@ -28,8 +28,6 @@ const customStyles = {
 function Upload(props) {
   let fileDescription;
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [currentStep, setCurrentStep] = useState('1')
-  const [currentFile, setCurrentFile] = useState({})
 
   function openModal() {
     setIsOpen(true);
@@ -53,7 +51,7 @@ function Upload(props) {
         </div>
         <button className="form-button mt-4" onClick={(e) => {
           e.preventDefault()
-          setCurrentStep('2')
+          props.setStep('2')
         }}>Next</button>
       </>
     )
@@ -93,12 +91,12 @@ function Upload(props) {
         <div style={{ display: 'flex', justifyContent: 'space-evenly', marginTop: '2rem', width: '100%' }}>
           <button className="form-button" onClick={(e) => {
             e.preventDefault()
-            setCurrentStep('1')
+            props.setStep('1')
           }}>Previous</button>
           {/* <button type="submit" className="form-button">Upload</button> */}
           <button className="form-button" onClick={(e) => {
           e.preventDefault()
-          setCurrentStep('3')
+          props.setStep('3')
           }}>Confirm</button>
         </div>
 
@@ -109,15 +107,40 @@ function Upload(props) {
   function thirdStep() {
     return(
       <div className="confirmation-screen">
+        <div className="loader-wrapper" style={{ height: '25vh' }}><div id="loader" className="loader"></div></div>
+        <h4>File is being uploaded...</h4>
+        <p>Transactions may take longer due to high transaction volumes</p>
+        <p>You can view your transaction on Etherscan here</p>
+
+        <div style={{ display: 'flex', justifyContent: 'space-evenly', marginTop: '2rem', width: '100%' }}>
+          <button className="form-button" onClick={(e) => {
+          e.preventDefault()
+          props.setStep('4')
+          }}>Confirm</button>
+        </div>
+      </div>
+    )
+  }
+
+  function fourthStep() {
+    return(
+      <div className="confirmation-screen">
         <CheckCircle color='#ad6bff' size={150} className="mb-5"/>
         <h4>File uploaded successfully</h4>
         <p>You can view your transaction on Etherscan here </p>
+        <div style={{ display: 'flex', justifyContent: 'space-evenly', marginTop: '2rem', width: '100%' }}>
+          <button className="form-button" onClick={(e) => {
+          e.preventDefault()
+          setIsOpen(false)
+          props.setStep('1')
+          }}>Confirm</button>
+        </div>
       </div>
     )
   }
 
   function renderView() {
-    switch(currentStep) {
+    switch(props.currentStep) {
       case '1':
         return firstStep()
         break;
@@ -126,6 +149,9 @@ function Upload(props) {
         break;
       case '3':
         return thirdStep()
+        break;
+      case '4':
+        return fourthStep()
     }
   }
 
