@@ -74,6 +74,7 @@ function Upload(props) {
               type="text"
               maxLength="30"
               disabled
+              placeholder={props.fileName}
               className="form-control mb-3"
               required />
             <small>Description <p>(130 max characters)</p></small>
@@ -93,11 +94,11 @@ function Upload(props) {
             e.preventDefault()
             props.setStep('1')
           }}>Previous</button>
-          {/* <button type="submit" className="form-button">Upload</button> */}
-          <button className="form-button" onClick={(e) => {
+          <button type="submit" className="form-button">Upload</button>
+          {/* <button className="form-button" onClick={(e) => {
           e.preventDefault()
           props.setStep('3')
-          }}>Confirm</button>
+          }}>Confirm</button> */}
         </div>
 
       </div>
@@ -111,13 +112,6 @@ function Upload(props) {
         <h4>File is being uploaded...</h4>
         <p>Transactions may take longer due to high transaction volumes</p>
         <p>You can view your transaction on Etherscan here</p>
-
-        <div style={{ display: 'flex', justifyContent: 'space-evenly', marginTop: '2rem', width: '100%' }}>
-          <button className="form-button" onClick={(e) => {
-          e.preventDefault()
-          props.setStep('4')
-          }}>Confirm</button>
-        </div>
       </div>
     )
   }
@@ -132,6 +126,7 @@ function Upload(props) {
           <button className="form-button" onClick={(e) => {
           e.preventDefault()
           setIsOpen(false)
+          window.location.reload()
           props.setStep('1')
           }}>Confirm</button>
         </div>
@@ -169,6 +164,7 @@ function Upload(props) {
             event.preventDefault()
             const description = fileDescription.value
             props.uploadFile(description)
+            props.setStep('3')
             }} >
             {renderView()}
         </form>

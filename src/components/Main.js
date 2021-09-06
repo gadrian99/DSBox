@@ -26,7 +26,8 @@ const Main = (props) => {
   const [searchField, setSearchField] = useState("")
   const [modalIsOpen, setIsOpen] = useState(false)
   const [currentFile, setCurrentFile] = useState({})
-  const [currentStep, setCurrentStep] = useState('1')
+  // const [currentStep, setCurrentStep] = useState('1')
+  console.log(props.currentStep)
 
   const customStyles = {
     content: {
@@ -43,10 +44,6 @@ const Main = (props) => {
     overlay: {
       backgroundColor: '#27262cc2'
     }
-  }
-
-  function setStep(step) {
-    setCurrentStep(step)
   }
 
   function filterFiles(e) {
@@ -327,7 +324,14 @@ const Main = (props) => {
                   href={"https://etherscan.io/address/" + props.account}>
                     {props.account ? props.account.substring(0,10) : '0x0'}...{props.account ? props.account.substring(35,42) : '0x0'}
                 </a> */}
-                <Upload account={props.account} captureFile={props.captureFile} uploadFile={props.uploadFile} fileName={props.fileName} setStep={setStep} currentStep={currentStep} />
+                <Upload
+                  account={props.account}
+                  captureFile={props.captureFile}
+                  uploadFile={props.uploadFile}
+                  fileName={props.fileName}
+                  setStep={props.setStep}
+                  currentStep={props.currentStep}
+                />
                 {/* <Bell size={30} style={{ marginRight: '1rem'}} strokeWidth={1}/> */}
                 {/* {props.account
                 ? <img

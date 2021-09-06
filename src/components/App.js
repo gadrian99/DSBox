@@ -123,13 +123,17 @@ class App extends Component {
          type: null,
          name: null
        })
-       window.location.reload()
+       this.setState({ currentStep: '4'})
       }).on('error', (e) =>{
         this.setState({ error: true })
         window.alert('Transaction failed - Check TOS for details')
         this.setState({loading: false})
       })
     })
+  }
+
+   setStep(step) {
+    this.setState({ currentStep: step})
   }
 
   constructor(props) {
@@ -142,26 +146,36 @@ class App extends Component {
       error: false,
       type: null,
       name: null,
-      toolState: false
+      toolState: false,
+      currentStep: '1'
     }
     this.uploadFile = this.uploadFile.bind(this)
     this.captureFile = this.captureFile.bind(this)
+    this.setStep = this.setStep.bind(this)
+
   }
 
   render() {
     // console.log(this.props)
-    // {if(this.state.error) return(<ConnectAlert />)}
+    {if(this.state.error) return(<ConnectAlert />)}
     return (
         <div className="app">
           {/* <Navbar account={this.state.account} files={this.state.files} /> */}
           <div className="main main-bg">
             { this.state.loading
-            ? <div className="loader-wrapper"><div id="loader" className="loader"><p>Loading...</p></div></div>
+            ? <div className="loader-wrapper"><div id="loader" className="loader"></div></div>
             : <Switch>
             <Route
               exact path='/'
               render={(props) => (
-                <Main {...props} account={this.state.account} files={this.state.files} captureFile={this.captureFile} uploadFile={this.uploadFile} fileName={this.state.name} />
+                <Main {...props}
+                  account={this.state.account}
+                  files={this.state.files}
+                  captureFile={this.captureFile}
+                  uploadFile={this.uploadFile}
+                  fileName={this.state.name}
+                  currentStep={this.state.currentStep}
+                  setStep={this.setStep} />
               )}
             />
             <Route component={NotFound} />
