@@ -27,4 +27,4 @@ Through use of the web browser you can connect with a blockchain wallet such as 
 
 ## Link:
 
-[https://thorbox.netlify.app/](https://thorbox.netlify.app/)
+[https://thorbox.netlify.app/](https://thorbox.on.fleek.co/)
