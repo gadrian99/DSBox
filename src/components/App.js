@@ -1,9 +1,6 @@
 import DStorage from '../abis/DStorage.json'
 import React, { Component } from 'react';
-import Navbar from './Navbar'
-import ToolBar from './ToolBar'
 import Main from './Main'
-import Upload from './Upload'
 import ConnectAlert from './ConnectAlert'
 import NotFound from './NotFound';
 
@@ -112,7 +109,7 @@ class App extends Component {
         return
       }
 
-      this.setState({ loading: true })
+      // this.setState({ loading: true })
       // Assign value for the file without extension
       if(this.state.type === ''){
         this.setState({type: 'none'})
@@ -155,12 +152,9 @@ class App extends Component {
 
   }
 
-  render() {
-    // console.log(this.props)
-    {if(this.state.error) return(<ConnectAlert />)}
-    return (
-        <div className="app">
-          {/* <Navbar account={this.state.account} files={this.state.files} /> */}
+  renderView() {
+    return(
+      <div className="app">
           <div className="main main-bg">
             { this.state.loading
             ? <div className="loader-wrapper"><div id="loader" className="loader"></div></div>
@@ -180,11 +174,15 @@ class App extends Component {
             />
             <Route component={NotFound} />
           </Switch>}
-            {/* <button onClick={() => this.setState({ toolState: !this.state.toolState })}>toggle</button> */}
           </div>
-          {this.state.toolState ? <ToolBar state={this.state.toolState}/> : null }
         </div>
-    );
+    )
+  }
+
+  render() {
+    return(
+      this.state.error ? <ConnectAlert /> : this.renderView()
+    )
   }
 }
 

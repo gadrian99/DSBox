@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-// import { convertBytes } from './helpers';
-// import moment from 'moment'
 import { CheckCircle, Upload as UploadIcon } from 'react-feather'
 
 import Modal from 'react-modal'
@@ -23,7 +21,6 @@ const customStyles = {
     backgroundColor: '#27262cc2'
   }
 }
-// Modal.setAppElement('#root');
 
 function Upload(props) {
   let fileDescription;
@@ -31,11 +28,6 @@ function Upload(props) {
 
   function openModal() {
     setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-
   }
 
   function closeModal() {
@@ -95,10 +87,6 @@ function Upload(props) {
             props.setStep('1')
           }}>Previous</button>
           <button type="submit" className="form-button">Upload</button>
-          {/* <button className="form-button" onClick={(e) => {
-          e.preventDefault()
-          props.setStep('3')
-          }}>Confirm</button> */}
         </div>
 
       </div>
@@ -138,15 +126,14 @@ function Upload(props) {
     switch(props.currentStep) {
       case '1':
         return firstStep()
-        break;
       case '2':
         return secondStep()
-        break;
       case '3':
         return thirdStep()
-        break;
       case '4':
         return fourthStep()
+      default:
+        return firstStep()
     }
   }
 
@@ -155,7 +142,6 @@ function Upload(props) {
       <button className="add-button" onClick={openModal}><UploadIcon size={30} /></button>
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Upload"

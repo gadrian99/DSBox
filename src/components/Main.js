@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { convertBytes } from './helpers';
 import moment from 'moment'
 import ContentAlert from './ContentAlert';
-import { useTrail } from 'react-spring';
 import Modal from 'react-modal'
 import Upload from './Upload';
 import Profile from './Profile';
-import { Bell } from 'react-feather'
 import { Search } from 'react-feather'
 
 
-import { Film, Image, Music, List, Grid, Download, Eye, ExternalLink } from 'react-feather';
+import { Film, Image, Music, List, Grid} from 'react-feather';
 import { ReactComponent as FileImg } from '../assets/img.svg'
 import { ReactComponent as FileApp } from '../assets/app.svg'
 import { ReactComponent as FileVid } from '../assets/vid.svg'
@@ -26,8 +24,6 @@ const Main = (props) => {
   const [searchField, setSearchField] = useState("")
   const [modalIsOpen, setIsOpen] = useState(false)
   const [currentFile, setCurrentFile] = useState({})
-  // const [currentStep, setCurrentStep] = useState('1')
-  console.log(props.currentStep)
 
   const customStyles = {
     content: {
@@ -73,13 +69,10 @@ const Main = (props) => {
     switch(fileType) {
       case 'video':
         return <FileVid style={{alignSelf: 'center'}}/>
-        break
       case 'audio':
         return <FileAud style={{alignSelf: 'center'}}/>
-        break
       case 'application':
         return <FileApp style ={{alignSelf: 'center'}} />
-        break
       case 'document':
         return <FileDoc style={{alignSelf: 'center'}} />
       default:
@@ -121,14 +114,6 @@ const Main = (props) => {
     setCurrentFile({})
   }
 
-  function renderError() {
-    return(
-      <div>
-        <h1>Error</h1>
-      </div>
-    )
-  }
-
   function renderTable() {
     return(
       <div className="table-container">
@@ -139,10 +124,9 @@ const Main = (props) => {
           style={customStyles}
           contentLabel="Single File View"
         >
-         {modalIsOpen && console.log(currentFile)}
           <div className="table-modal">
               <div style={{ display: 'flex', justifyContent: 'center', width: '100%'}}>
-              { modalIsOpen && currentFile.fileType.split('/', 1) == "image" ? <img style={{ height: '15rem', alignSelf: 'center', marginBottom: '1rem' }} src={"https://ipfs.infura.io/ipfs/" + currentFile.fileHash} /> : null }
+              { modalIsOpen && currentFile.fileType.split('/', 1) == "image" ? <img alt="" style={{ height: '15rem', alignSelf: 'center', marginBottom: '1rem' }} src={"https://ipfs.infura.io/ipfs/" + currentFile.fileHash} /> : null }
               </div>
 
               <small>Name</small>
@@ -172,10 +156,10 @@ const Main = (props) => {
               <small>File Hash</small>
               <p className="mb-3">{currentFile.fileHash}</p>
 
-              <div style={{ display: 'flex', justifyContent: 'space-evenly', width: '100%' }}>
+              {/* <div style={{ display: 'flex', justifyContent: 'space-evenly', width: '100%' }}>
                 <button download className="download-button" href={"https://ipfs.infura.io/ipfs/" + currentFile.fileHash} target="_blank" >Download</button>
                 <button className="share-button">Share</button>
-              </div>
+              </div> */}
           </div>
         </Modal>
         <table className="table-sm text-center" style={{ width: '85vw', marginTop: '2rem' }}>
@@ -186,8 +170,6 @@ const Main = (props) => {
             <th scope="col" style={{ width: '120px'}}>Type</th>
             <th scope="col" style={{ width: '90px'}}>Size</th>
             <th scope="col" style={{ width: '90px', borderTopRightRadius: '.5rem'}}>Date</th>
-            {/* <th scope="col" style={{ width: '120px'}}>Uploader/View</th> */}
-            {/* <th scope="col" style={{ width: '120px', borderTopRightRadius: '.5rem'}}>Actions</th> */}
           </tr>
         </thead>
         { filteredFiles.map((file, key) => {
@@ -199,26 +181,6 @@ const Main = (props) => {
                 <td className="overflow" style={{ maxWidth: '120px'}}>{file.fileType.split('/', 1)[0]}</td>
                 <td className="overflow" style={{ maxWidth: '90px'}}>{convertBytes(file.fileSize)}</td>
                 <td className="overflow" style={{ maxWidth: '90px'}}>{moment.unix(file.uploadTime).format('h:mm:ss A M/D/Y')}</td>
-                {/* <td className="overflow" style={{ maxWidth: '120px'}}>
-                  <a
-                    href={"https://etherscan.io/address/" + file.uploader}
-                    rel="noopener noreferrer"
-                    target="_blank">
-                    {file.uploader.substring(0,10)}...
-                  </a>
-                  </td> */}
-                {/* <td className="overflow" style={{ maxWidth: '120px' }}>
-                  <a
-                    href={"https://ipfs.infura.io/ipfs/" + file.fileHash}
-                    rel="noopener noreferrer"
-                    target="_blank">
-                    {file.fileHash.substring(0,10)}...
-                    <img alt="preview" style={{ height: '50px' }}src={"https://ipfs.infura.io/ipfs/" + file.fileHash} />
-                  </a>
-                  <Download />
-                  <Eye style={{ margin: '0 1rem' }}/>
-                  <ExternalLink />
-                </td> */}
               </tr>
             </thead>
             )
@@ -238,10 +200,9 @@ const Main = (props) => {
             style={customStyles}
             contentLabel="Single File View"
           >
-          {modalIsOpen && console.log(currentFile)}
             <div className="table-modal">
               <div style={{ display: 'flex', justifyContent: 'center', width: '100%'}}>
-              { modalIsOpen && currentFile.fileType.split('/', 1) == "image" ? <img style={{ height: '15rem', alignSelf: 'center', marginBottom: '1rem' }} src={"https://ipfs.infura.io/ipfs/" + currentFile.fileHash} /> : null }
+              { modalIsOpen && currentFile.fileType.split('/', 1) == "image" ? <img alt="" style={{ height: '15rem', alignSelf: 'center', marginBottom: '1rem' }} src={"https://ipfs.infura.io/ipfs/" + currentFile.fileHash} /> : null }
               </div>
 
               <small>Name</small>
@@ -271,10 +232,10 @@ const Main = (props) => {
               <small>File Hash</small>
               <p className="mb-3">{currentFile.fileHash}</p>
 
-              <div style={{ display: 'flex', justifyContent: 'space-evenly', width: '100%' }}>
+              {/* <div style={{ display: 'flex', justifyContent: 'space-evenly', width: '100%' }}>
                 <button download className="download-button" href={"https://ipfs.infura.io/ipfs/" + currentFile.fileHash} target="_blank" >Download</button>
                 <button className="share-button">Share</button>
-              </div>
+              </div> */}
           </div>
         </Modal>
       <div className="grid-container">
@@ -308,7 +269,7 @@ const Main = (props) => {
 
   return(
       <>
-        {/* <Header searchFiles={searchFiles} account={props.account} files={props.files} captureFile={props.captureFile} uploadFile={props.uploadFile}/> */}
+
         <div className="header">
           <img alt="logo" src="/assets/Logo.svg" className="logo"></img>
             <div style={{ width: '100%' }} className="search-bar">
@@ -316,14 +277,6 @@ const Main = (props) => {
               <input className="search-input" placeholder="Search..." onChange={handleChange}/>
             </div>
             <div className="header-tools">
-                {/* <a target="_blank"
-                  alt=""
-                  style={{ fontFamily: 'Oleo Script'}}
-                  className="header-address"
-                  rel="noopener noreferrer"
-                  href={"https://etherscan.io/address/" + props.account}>
-                    {props.account ? props.account.substring(0,10) : '0x0'}...{props.account ? props.account.substring(35,42) : '0x0'}
-                </a> */}
                 <Upload
                   account={props.account}
                   captureFile={props.captureFile}
@@ -332,17 +285,6 @@ const Main = (props) => {
                   setStep={props.setStep}
                   currentStep={props.currentStep}
                 />
-                {/* <Bell size={30} style={{ marginRight: '1rem'}} strokeWidth={1}/> */}
-                {/* {props.account
-                ? <img
-                    alt=""
-                    className="header-image"
-                    width="30"
-                    height="30"
-                    src={`data:image/png;base64,${new Identicon(props.account, 30).toString()}`}
-                  />
-                : <span></span>
-                } */}
                 <Profile account={props.account} files={props.files} />
             </div>
         </div>
@@ -358,11 +300,9 @@ const Main = (props) => {
             <button type="submit" className={filter === 'audio' && 'active'} onClick={() => filterFiles('audio')}><Music size={30} strokeWidth={1}/></button>
           </div>
         </div>
-        {console.log(currentFile)}
         {filteredFiles.length < 1 ? <ContentAlert /> : renderView()}
         </>
   )
-     // import files from blockchain to this component
 }
 
 export default Main

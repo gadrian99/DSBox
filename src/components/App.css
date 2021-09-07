@@ -564,6 +564,7 @@ p {
   display: flex;
   justify-content: center;
   align-content: center;
+  margin-top: 1rem;
 }
 
 .grid-container {

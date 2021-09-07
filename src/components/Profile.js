@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Identicon from 'identicon.js';
 import Modal from 'react-modal'
 import { convertBytes } from './helpers';
-import { User, Sun, Moon, File, Film, Image, Music } from 'react-feather';
+import { User, File, Film, Image, Music } from 'react-feather';
 
 const customStyles = {
   content: {
@@ -37,11 +37,6 @@ function Profile(props) {
         setIsOpen(true);
     }
 
-    function afterOpenModal() {
-        // references are now sync'd and can be accessed.
-
-    }
-
     function closeModal() {
         setIsOpen(false);
     }
@@ -50,7 +45,6 @@ function Profile(props) {
             <button className="profile-button" onClick={openModal}><User color="white" size={30} /></button>
             <Modal
                 isOpen={modalIsOpen}
-                onAfterOpen={afterOpenModal}
                 onRequestClose={closeModal}
                 style={customStyles}
                 contentLabel="Upload"
@@ -70,17 +64,16 @@ function Profile(props) {
                             }
                             <a target="_blank"
                             alt=""
-                            // style={{ fontFamily: 'Oleo Script'}}
                             className="profile-address"
                             rel="noopener noreferrer"
                             href={"https://etherscan.io/address/" + props.account}>
                                 {props.account ? props.account.substring(0,10) : '0x0'}...{props.account ? props.account.substring(35,42) : '0x0'}
                             </a>
                         </div>
-                        <div style={{ display: 'flex', alignItems: 'center'}}>
+                        {/* <div style={{ display: 'flex', alignItems: 'center'}}>
                             <button className="theme-button brd-rd-left"><Sun /></button>
                             <button className="theme-button brd-rd-right"><Moon /></button>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="file-container">
                         <div className="file-container-left">
@@ -121,7 +114,7 @@ function Profile(props) {
                         <p>Total Files: {props.files.length}</p>
                         <p>Used Space: {countFiles()}</p>
                     </div>
-                    <img src="/assets/Colored-black.svg" style={{ height: '2rem', margin: '.5rem 0' }}/>
+                    <img alt="" src="/assets/Colored-black.svg" style={{ height: '2rem', margin: '.5rem 0' }}/>
                     <small>App version 2.0</small>
                 </div>
             </Modal>

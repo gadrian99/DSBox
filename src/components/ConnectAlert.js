@@ -8,7 +8,7 @@ function ConnectAlert() {
         <animated.div style={spring} className="connect-alert">
             <AlertOctagon size={'7rem'} color={'#CF6679'} />
             <p className="connect-alert-primary">Oops, it looks like there was an error...</p>
-            <p className="connect-alert-secondary">Please make sure your Metamask wallet is connected to the right network.</p>
+            <p className="connect-alert-secondary">Please make sure you are connected to the right network.</p>
             <button className="connect-alert-button" onClick={() => window.location.reload()}><RefreshCcw style={{ marginRight: '1rem' }}/>Reload page</button>
         </animated.div>
     )
